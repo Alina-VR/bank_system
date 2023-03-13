@@ -6,6 +6,7 @@ public class Credit extends Account{
         super(balance, login, bankName, accountType);
     }
 
+
     @Override
     public void push(int sum) {
 

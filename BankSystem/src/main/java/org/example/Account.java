@@ -16,6 +16,7 @@ public abstract class Account {
          this.accountType = accountType;
     }
 
+
     public String setID(String login, String bankName, String accountType){
         return login+bankName+accountType;
     }

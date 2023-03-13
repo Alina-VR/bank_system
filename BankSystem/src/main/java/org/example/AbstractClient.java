@@ -28,6 +28,16 @@ abstract class AbstractClient {
         this.accounts = accounts;
 
     }
+    public AbstractClient(){
+        this.userName = null;
+        this.userSurname = null;
+        this.address = null;
+        this.passport = null;
+        this.login = null;
+        this.password = null;
+        this.accounts = null;
+
+    }
 
     public Bank chooseBank(String bank) {
         // ls banks
