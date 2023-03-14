@@ -13,12 +13,14 @@ public class Bank {
     public int setBankID(String bankName){
         return 0;
     }
-    public Debit debit(){
-        Debit debit = new Debit();
+    public Debit debit(int balance,String login,String bankName,String accountType){
+        Debit debit = new Debit(balance,login,bankName,accountType);
         return debit;
     }
-    public Credit credit(){
-        Credit credit = new Credit();
+    public Credit credit(int balance,String login,String bankName,String accountType){
+        Credit credit = new Credit(balance,login,bankName,accountType);
+        credit.creditLimit = creditLimit;
+        credit.fee = fee;
         return credit;
     }
 }

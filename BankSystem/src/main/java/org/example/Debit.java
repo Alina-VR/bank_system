@@ -8,12 +8,18 @@ public class Debit extends Account {
 
     @Override
     public void push(int sum) {
-
+        balance += sum;
+        System.out.println("Your new balance is " + balance);
     }
 
     @Override
     public void get(int sum) {
-
+        if (sum <= balance) {
+            balance -= sum;
+            System.out.println("Withdraw " + sum);
+            System.out.println("Your new balance is " + balance);
+        } else {
+            System.out.println("Exceed limit");
+        }
     }
-
 }

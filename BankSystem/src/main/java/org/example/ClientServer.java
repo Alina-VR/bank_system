@@ -2,20 +2,18 @@ package org.example;
 
 import java.util.Scanner;
 
-public class Server {
+public class ClientServer {
     public static Client signIn(String sign) {
         Scanner scanner = new Scanner(System.in);
         Client currClient = null;
-        if (sign.equals("sign in")) {
-            System.out.println("Login: ");
-            String login = scanner.next();
-            currClient = Base.base.get(login);
-            System.out.println("Password: ");
-            String password = scanner.next();
-            if (!password.equals(currClient.password)) {
-                System.out.println("Access denied");
-                System.exit(1);
-            }
+        System.out.println("Login: ");
+        String login = scanner.next();
+        currClient = Base.runtimeBase.get(login);
+        System.out.println("Password: ");
+        String password = scanner.next();
+        if (!password.equals(currClient.password)) {
+            System.out.println("Access denied");
+            System.exit(1);
         }
         return currClient;
     }
@@ -36,23 +34,12 @@ public class Server {
         String password = scanner.next();
 
         Client currClient = new Client(name, surname, address, passport, login, password, null);
-        Base.base.put(currClient.login, currClient);
+        Base.runtimeBase.put(currClient.login, currClient);
         return currClient;
     }
 
     public static Account createAccount(Client currClient) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("There are your accounts here: ");
-        if (currClient.accounts != null) {
-            for (String element : currClient.accounts) {
-                System.out.println(element);
-            }
-            System.out.println("Choose account or create a new one");
-            System.out.println("If you want to choose any account enter it's name from the list");
-        } else {
-            System.out.println("You have not got any accounts yet");
-        }
-        System.out.println("If you want to create a new one enter 'create'");
         if (scanner.next().equals("create")) {
             System.out.println("Choose Bank: ");
             String bankName = scanner.next();
@@ -73,4 +60,11 @@ public class Server {
             return null;
         }
     }
+    public static Account workWithAccount() {
+
+    }
+    public static void workWithCredit() {
+
+    }
 }
+

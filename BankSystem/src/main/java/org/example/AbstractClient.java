@@ -39,35 +39,40 @@ abstract class AbstractClient {
 
     }
 
-    public Bank chooseBank(String bank) {
-        // ls banks
-        // list of banks
-        Bank currBank = new Bank();
-        return currBank;
+    @Override
+    public String toString() {
+        return userName + " " + userSurname + " " + address + " " + passport + " " + login + " " + password + " " + accounts;
     }
-// bank has been added illegally!
-    public Account chooseAccount(String account, String bank) {
-        Bank currBank = chooseBank(bank);
-        if (account.equals("credit")) {
-            return currBank.credit();
-        } else if (account.equals("debit")) {
-            return currBank.debit();
-        } else {
-            System.out.println("Error");
-            return null;
-        }
-    }
-    // account and bank have been added illegally!
-    public void chooseOption(String option, int sum, String account, String bank) {
-        Account currAccount = chooseAccount(account, bank);
-        if (option.equals("push")){
-            currAccount.push(sum);
-        } else if (option.equals("get")){
-            currAccount.get(sum);
-        } else {
-            System.out.println("Error");
-        }
-    }
+
+    //    public Bank chooseBank(String bank) {
+//        // ls banks
+//        // list of banks
+//        Bank currBank = new Bank();
+//        return currBank;
+//    }
+//// bank has been added illegally!
+//    public Account chooseAccount(String account, String bank) {
+//        Bank currBank = chooseBank(bank);
+//        if (account.equals("credit")) {
+//            return currBank.credit();
+//        } else if (account.equals("debit")) {
+//            return currBank.debit();
+//        } else {
+//            System.out.println("Error");
+//            return null;
+//        }
+//    }
+//    // account and bank have been added illegally!
+//    public void chooseOption(String option, int sum, String account, String bank) {
+//        Account currAccount = chooseAccount(account, bank);
+//        if (option.equals("push")){
+//            currAccount.push(sum);
+//        } else if (option.equals("get")){
+//            currAccount.get(sum);
+//        } else {
+//            System.out.println("Error");
+//        }
+//    }
 
     public abstract String setID(String userName, String userSurname, String passport);
 }
