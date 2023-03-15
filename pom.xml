@@ -24,7 +24,7 @@
                             <archive>
                                 <manifest>
                                     <mainClass>
-                                        org.example.Main;
+                                        org.example.Main
                                     </mainClass>
                                 </manifest>
                             </archive>

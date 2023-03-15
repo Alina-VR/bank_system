@@ -29,12 +29,16 @@ public class Main {
         }
         System.out.println("If you want to create a new one enter 'create'");
         String command = scanner.next();
-        if (command.equals("create")){
+        if (command.equals("create")) {
             Account currAccount = ClientServer.createAccount(currClient);
         } else {
-            Account currAccount = ClientServer.workWithAccount();
-        }
+            for (String element : Base.accountBase.keySet()) {
+                if (command.equals(element)) {
+                    Account currAccount = ClientServer.workWithAccount(element);
+                }
+            }
 //        String currID = currAccount.setID();
 
+        }
     }
 }

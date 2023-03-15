@@ -60,11 +60,39 @@ public class ClientServer {
             return null;
         }
     }
-    public static Account workWithAccount() {
 
-    }
-    public static void workWithCredit() {
-
+    public static Account workWithAccount(String element) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Choose the option: push/get ");
+        if (scanner.next().equals("push")) {
+            System.out.println("Write down the sum ");
+            int sum = scanner.nextInt();
+            for (Bank bank : Base.banks) {
+                if (element.contains(Bank.bankName)) {
+                    if (element.contains("debit")) {
+                        Debit currDebit = bank.debit();
+                        currDebit.push(sum);
+                    } else if (element.contains("credit")) {
+                        Credit currCredit = bank.credit();
+                        currCredit.push(sum);
+                    }
+                }
+            }
+        } else if (scanner.next().equals("get")) {
+            System.out.println("Write down the sum ");
+            int sum = scanner.nextInt();
+            for (Bank bank : Base.banks) {
+                if (element.contains(Bank.bankName)) {
+                    if (element.contains("debit")) {
+                        Debit currDebit = bank.debit();
+                        currDebit.get(sum);
+                    } else if (element.contains("credit")) {
+                        Credit currCredit = bank.credit();
+                        currCredit.get(sum);
+                    }
+                }
+            }
+        }
     }
 }
 
