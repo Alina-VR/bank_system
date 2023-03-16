@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Base.addBanks();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose sign_in/ sign_up ");
         String sign = scanner.next();
@@ -31,14 +32,13 @@ public class Main {
         String command = scanner.next();
         if (command.equals("create")) {
             Account currAccount = ClientServer.createAccount(currClient);
+            ClientServer.workWithAccount(currAccount.ID, currClient);
         } else {
             for (String element : Base.accountBase.keySet()) {
                 if (command.equals(element)) {
-                    Account currAccount = ClientServer.workWithAccount(element);
+                    ClientServer.workWithAccount(element, currClient);
                 }
             }
-//        String currID = currAccount.setID();
-
         }
     }
 }

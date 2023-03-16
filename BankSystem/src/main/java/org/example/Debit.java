@@ -19,7 +19,7 @@ public class Debit extends Account {
             System.out.println("Withdraw " + sum);
             System.out.println("Your new balance is " + balance);
         } else {
-            System.out.println("Exceed limit");
+            System.out.println("Insufficient funds"); // change comment
         }
     }
 }

@@ -12,9 +12,9 @@ abstract class AbstractClient {
     LinkedList<String> accounts;
 
     //ID
-    public int findLogin(String userName, String userSurname) {
-        return 0;
-    }
+    ///public int findLogin(String userName, String userSurname) {
+        ///return 0;
+    ///}
 
     ;public AbstractClient(String userName, String userSurname,
                            String address, String passport,
@@ -74,6 +74,6 @@ abstract class AbstractClient {
 //        }
 //    }
 
-    public abstract String setID(String userName, String userSurname, String passport);
+   /// public abstract String setID(String userName, String userSurname, String passport);
 }
 

@@ -1,14 +1,14 @@
 package org.example;
 
 public class Bank {
-    static String bankName;
+    String bankName;
     int creditLimit;
     double fee;
 
-    public Bank() {
-        this.bankName = "Bank";
-        this.creditLimit = 1000000;
-        this.fee = 0.05;
+    public Bank(String bankName, int creditLimit, double fee) {
+        this.bankName = bankName;
+        this.creditLimit = creditLimit;
+        this.fee = fee;
     }
     public int setBankID(String bankName){
         return 0;

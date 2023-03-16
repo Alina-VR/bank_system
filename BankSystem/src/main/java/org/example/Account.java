@@ -1,10 +1,11 @@
 package org.example;
 
 public abstract class Account {
-    public int balance;
+    public int balance;// TODO: домножать на 100 суммы
     public String login;
     public String bankName;
     public String accountType;
+    public String ID;
 
     public Account(int balance,
             String login,
@@ -14,11 +15,12 @@ public abstract class Account {
          this.login = login;
          this.bankName = bankName;
          this.accountType = accountType;
+         ///this.ID = ID;
     }
 
 
-    public String setID(String login, String bankName, String accountType){
-        return login+bankName+accountType;
+    public void setID(String login, String bankName, String accountType){
+        ID = login+bankName+accountType;
     }
 
     public abstract void push(int sum);
