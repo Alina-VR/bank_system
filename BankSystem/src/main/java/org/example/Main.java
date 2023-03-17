@@ -5,6 +5,8 @@ import java.sql.SQLOutput;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import static org.example.ConvertJson.convertTheClient;
+
 public class Main {
     public static void main(String[] args) {
         Base.addBanks();
@@ -40,5 +42,8 @@ public class Main {
                 }
             }
         }
+        String clientJson = ConvertJson.convertJsonArray(ConvertJson.convertTheClient(currClient));
+        IOStream.output(clientJson);
+        IOStream.input();
     }
 }

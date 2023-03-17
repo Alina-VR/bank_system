@@ -1,7 +1,5 @@
 package org.example;
 
-import com.google.gson.Gson;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -10,30 +8,34 @@ public class ConvertJson {
 
 
     JsonArray jsonArray = new JsonArray();
-    public static ClientPojo getClient(Client client) {
-        ClientPojo clientPojo = new ClientPojo();
-        clientPojo.setUserName(client.userName); // need arguments
-        clientPojo.setUserSurname(client.userSurname);
-        clientPojo.setAddress(client.address);
-        clientPojo.setPassport(client.passport);
-        clientPojo.setLogin(client.login);
-        clientPojo.setPassword(client.password);
-        clientPojo.setAccounts(client.accounts);
 
-        return clientPojo;
+    public static JsonObject convertTheClient(AbstractClient currClient) {
+        //JsonArray array = new JsonArray(7);
+        JsonObject keyValue = new JsonObject();
+        keyValue.addProperty("UserName", currClient.userName);
+        keyValue.addProperty("UserSurname", currClient.userSurname);
+        keyValue.addProperty("address", currClient.address);
+        keyValue.addProperty("passport", currClient.passport);
+        keyValue.addProperty("login", currClient.login);
+        keyValue.addProperty("password", currClient.password);
+        //TODO accounts
+        ///keyValue.addProperty("accounts", currClient.accounts)
+//        JsonArray accountsJson = new JsonArray();
+//        currClient.accounts {
+//
+//        }
+
+
+        JsonObject convertedClient = new JsonObject();
+        convertedClient.addProperty(currClient.login, keyValue.toString());
+        return convertedClient;
     }
-    public static String convertJson(Client client) {
-        ClientPojo clientPojo = getClient(client);
-        String clientJson = new Gson().toJson(clientPojo);
-        return clientJson;
-    }
 
-    public static String convertJsonArray(ClientPojo clientPojo, String clientJson) {
-        String ID = String.valueOf(clientPojo.getLogin());
-        JsonObject clientsJson = new JsonObject();
-        clientsJson.addProperty(ID, clientJson);
-        return clientsJson.toString();
+    public static String convertJsonArray(JsonObject convertedClient) {
 
+        JsonArray array = new JsonArray();
+        array.add(convertedClient);
+        return array.toString();
 
     }
 }
