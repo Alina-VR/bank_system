@@ -1,6 +1,6 @@
 package org.example;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 abstract class AbstractClient {
     String userName;
@@ -9,18 +9,16 @@ abstract class AbstractClient {
     String passport;
     String login;
     String password;
-    LinkedList<String> accounts;
+    ArrayList<String> accounts;
 
     //ID
     ///public int findLogin(String userName, String userSurname) {
     ///return 0;
     ///}
 
-    ;
-
     public AbstractClient(String userName, String userSurname,
                           String address, String passport,
-                          String login, String password, LinkedList<String> accounts) {
+                          String login, String password, ArrayList<String> accounts) {
         this.userName = userName;
         this.userSurname = userSurname;
         this.address = address;
@@ -41,4 +39,41 @@ abstract class AbstractClient {
         this.accounts = null;
 
     }
+
+    @Override
+    public String toString() {
+        return userName + " " + userSurname + " " + address + " " + passport + " " + login + " " + password + " " + accounts;
+    }
+
+    //    public Bank chooseBank(String bank) {
+//        // ls banks
+//        // list of banks
+//        Bank currBank = new Bank();
+//        return currBank;
+//    }
+//// bank has been added illegally!
+//    public Account chooseAccount(String account, String bank) {
+//        Bank currBank = chooseBank(bank);
+//        if (account.equals("credit")) {
+//            return currBank.credit();
+//        } else if (account.equals("debit")) {
+//            return currBank.debit();
+//        } else {
+//            System.out.println("Error");
+//            return null;
+//        }
+//    }
+//    // account and bank have been added illegally!
+//    public void chooseOption(String option, int sum, String account, String bank) {
+//        Account currAccount = chooseAccount(account, bank);
+//        if (option.equals("push")){
+//            currAccount.push(sum);
+//        } else if (option.equals("get")){
+//            currAccount.get(sum);
+//        } else {
+//            System.out.println("Error");
+//        }
+//    }
+
+    /// public abstract String setID(String userName, String userSurname, String passport);
 }

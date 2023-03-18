@@ -17,7 +17,7 @@ public class Credit extends Account {
     }
 
     @Override
-    public void get(int sum) {
+    public void withdraw(int sum) {
         if (sum <= creditLimit) {
             balance -= sum;
             debt += sum * (1 + fee);

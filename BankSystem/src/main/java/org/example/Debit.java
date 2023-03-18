@@ -13,7 +13,7 @@ public class Debit extends Account {
     }
 
     @Override
-    public void get(int sum) {
+    public void withdraw(int sum) {
         if (sum <= balance) {
             balance -= sum;
             System.out.println("Withdraw " + sum);
