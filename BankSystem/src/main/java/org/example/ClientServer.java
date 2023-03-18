@@ -5,20 +5,17 @@ import java.util.Scanner;
 public class ClientServer {
     public static Client signIn() {
         Scanner scanner = new Scanner(System.in);
-        Client currClient = null;
+        Client currClient;
         System.out.println("Login: ");
         String login = scanner.next();
         currClient = Base.runtimeBase.get(login);
         System.out.println("Password: ");
         String password = scanner.next();
-        if (!password.equals(currClient.password)) {
+        while (!password.equals(currClient.password)) {
             System.out.println("Password: ");
-            String secondPassword = scanner.next();
-            if (!secondPassword.equals(currClient.password)) {
-                System.out.println("Access denied");
-                System.exit(1);
-            }
+            password = scanner.next();
         }
+        System.out.println("Welcome!");
         return currClient;
     }
 
@@ -45,8 +42,8 @@ public class ClientServer {
     public static Account createAccount(Client currClient) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose Bank: ");
-        for (Bank element:
-             Base.banks) {
+        for (Bank element :
+                Base.banks) {
             System.out.println(element.bankName);
         }
         String bankName = scanner.next();
@@ -63,8 +60,7 @@ public class ClientServer {
             Base.accountBase.put(currAccount.ID, currAccount);
         } else {
             System.out.println("Error");
-            System.exit(1);
-            currAccount = null;
+            return null;
         }
         return currAccount;
     }
@@ -72,12 +68,13 @@ public class ClientServer {
 
     public static void workWithAccount(String element, Client currClient) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Choose the option: push/withdraw ");
-        if (scanner.next().equals("push")) {
+        System.out.println("Choose the option: push/withdraw/check_balance ");
+        String command = scanner.next();
+        if (command.equals("push")) {
             System.out.println("Write down the sum ");
             int sum = scanner.nextInt();
             for (Bank bank : Base.banks) {
-                if (element.contains(bank.bankName)) { //// Bank -> bank
+                if (element.contains(bank.bankName)) {
                     if (element.contains("debit")) {
                         Debit currDebit = bank.debit(Base.accountBase.get(element).balance,
                                 Base.accountBase.get(element).login,
@@ -93,11 +90,11 @@ public class ClientServer {
                     }
                 }
             }
-        } else if (scanner.next().equals("withdraw")) {
+        } else if (command.equals("withdraw")) {
             System.out.println("Write down the sum ");
             int sum = scanner.nextInt();
             for (Bank bank : Base.banks) {
-                if (element.contains(bank.bankName)) { /// Bank -> bank
+                if (element.contains(bank.bankName)) {
                     if (element.contains("debit")) {
                         Debit currDebit = bank.debit(Base.accountBase.get(currClient.login).balance,
                                 Base.accountBase.get(currClient.login).login,
@@ -111,6 +108,24 @@ public class ClientServer {
                                 Base.accountBase.get(currClient.login).bankName,
                                 Base.accountBase.get(currClient.login).accountType);
                         currCredit.withdraw(sum);
+                    }
+                }
+            }
+        } else if (command.equals("check_")) {
+            for (Bank bank : Base.banks) {
+                if (element.contains(bank.bankName)) {
+                    if (element.contains("debit")) {
+                        Debit currDebit = bank.debit(Base.accountBase.get(element).balance,
+                                Base.accountBase.get(element).login,
+                                Base.accountBase.get(element).bankName,
+                                Base.accountBase.get(element).accountType);
+                        currDebit.checkBalance();
+                    } else if (element.contains("credit")) {
+                        Credit currCredit = bank.credit(Base.accountBase.get(element).balance,
+                                Base.accountBase.get(element).login,
+                                Base.accountBase.get(element).bankName,
+                                Base.accountBase.get(element).accountType);
+                        currCredit.checkBalance();
                     }
                 }
             }
