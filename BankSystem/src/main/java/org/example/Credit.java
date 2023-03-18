@@ -28,4 +28,10 @@ public class Credit extends Account {
             System.out.println("Exceed limit");
         }
     }
+
+    @Override
+    public void checkBalance() {
+        System.out.println("Your balance is " + balance);
+    }
+
 }
