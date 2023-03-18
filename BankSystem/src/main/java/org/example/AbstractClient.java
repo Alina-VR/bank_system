@@ -77,4 +77,3 @@ abstract class AbstractClient {
 
     /// public abstract String setID(String userName, String userSurname, String passport);
 }
-
