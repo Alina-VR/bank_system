@@ -1,6 +1,6 @@
 package org.example;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 abstract class AbstractClient {
     String userName;
@@ -9,16 +9,16 @@ abstract class AbstractClient {
     String passport;
     String login;
     String password;
-    LinkedList<String> accounts;
+    ArrayList<String> accounts;
 
     //ID
     ///public int findLogin(String userName, String userSurname) {
-        ///return 0;
+    ///return 0;
     ///}
 
-    ;public AbstractClient(String userName, String userSurname,
-                           String address, String passport,
-                           String login, String password, LinkedList<String> accounts){
+    public AbstractClient(String userName, String userSurname,
+                          String address, String passport,
+                          String login, String password, ArrayList<String> accounts) {
         this.userName = userName;
         this.userSurname = userSurname;
         this.address = address;
@@ -28,7 +28,8 @@ abstract class AbstractClient {
         this.accounts = accounts;
 
     }
-    public AbstractClient(){
+
+    public AbstractClient() {
         this.userName = null;
         this.userSurname = null;
         this.address = null;
@@ -74,6 +75,6 @@ abstract class AbstractClient {
 //        }
 //    }
 
-   /// public abstract String setID(String userName, String userSurname, String passport);
+    /// public abstract String setID(String userName, String userSurname, String passport);
 }
 

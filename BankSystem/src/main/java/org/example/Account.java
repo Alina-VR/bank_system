@@ -25,7 +25,7 @@ public abstract class Account {
 
     public abstract void push(int sum);
 
-    public abstract void get(int sum);
+    public abstract void withdraw(int sum);
 
 }
 

@@ -3,7 +3,7 @@ package org.example;
 import java.util.Scanner;
 
 public class ClientServer {
-    public static Client signIn(String sign) {
+    public static Client signIn() {
         Scanner scanner = new Scanner(System.in);
         Client currClient = null;
         System.out.println("Login: ");
@@ -22,7 +22,7 @@ public class ClientServer {
         return currClient;
     }
 
-    public static Client signUp(String sign) {
+    public static Client signUp() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Name: ");
         String name = scanner.next();
@@ -72,7 +72,7 @@ public class ClientServer {
 
     public static void workWithAccount(String element, Client currClient) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Choose the option: push/get ");
+        System.out.println("Choose the option: push/withdraw ");
         if (scanner.next().equals("push")) {
             System.out.println("Write down the sum ");
             int sum = scanner.nextInt();
@@ -93,7 +93,7 @@ public class ClientServer {
                     }
                 }
             }
-        } else if (scanner.next().equals("get")) {
+        } else if (scanner.next().equals("withdraw")) {
             System.out.println("Write down the sum ");
             int sum = scanner.nextInt();
             for (Bank bank : Base.banks) {
@@ -104,13 +104,13 @@ public class ClientServer {
                                 Base.accountBase.get(currClient.login).bankName,
                                 Base.accountBase.get(currClient.login).accountType);
 
-                        currDebit.get(sum);
+                        currDebit.withdraw(sum);
                     } else if (element.contains("credit")) {
                         Credit currCredit = bank.credit(Base.accountBase.get(currClient.login).balance,
                                 Base.accountBase.get(currClient.login).login,
                                 Base.accountBase.get(currClient.login).bankName,
                                 Base.accountBase.get(currClient.login).accountType);
-                        currCredit.get(sum);
+                        currCredit.withdraw(sum);
                     }
                 }
             }

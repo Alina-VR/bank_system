@@ -1,8 +1,6 @@
 package org.example;
 
 
-import java.sql.SQLOutput;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
@@ -13,9 +11,9 @@ public class Main {
         String sign = scanner.next();
         Client currClient = new Client();
         if (sign.equals("sign_in")) {
-            currClient = ClientServer.signIn(sign);
+            currClient = ClientServer.signIn();
         } else if (sign.equals("sign_up")) {
-            currClient = ClientServer.signUp(sign);
+            currClient = ClientServer.signUp();
         }
 
         System.out.println("There are your accounts here: ");
