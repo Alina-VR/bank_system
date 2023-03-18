@@ -22,4 +22,9 @@ public class Debit extends Account {
             System.out.println("Insufficient funds"); // change comment
         }
     }
+
+    @Override
+    public void checkBalance() {
+        System.out.println("Your balance is " + balance);
+    }
 }
