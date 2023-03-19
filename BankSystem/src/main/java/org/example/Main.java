@@ -5,12 +5,25 @@ import lombok.SneakyThrows;
 
 import javax.management.StringValueExp;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     @SneakyThrows
     public static void main(String[] args) {
+        ArrayClientsPOJO arrayClientsPOJO = Converter.toJavaObjectClient();
+        List<Client> array1 = arrayClientsPOJO.toClientsArray();
+        for (Client client:
+                array1) {
+            Base.runtimeBase.put(client.login, client);
+        }
+        ArrayAccountsPOJO arrayAccountsPOJO = Converter.toJavaObjectAccount();
+        List<Account> array2 = arrayAccountsPOJO.toAccountsArray();
+        for (Account account:
+                array2) {
+            Base.accountBase.put(account.ID, account);
+        }
         Base.addBanks();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose sign_in/ sign_up ");
@@ -45,10 +58,29 @@ public class Main {
                     }
                 }
             }
+
+
             List<ClientPOJO> clients = new ArrayList<>();
-            clients.add(new ClientPOJO(currClient));
-            Converter.toJSON(new ArrayClientsPOJO(clients));
-            System.out.println(Converter.toJavaObject().toString());
+            List<String> keys1 = new ArrayList<>(Base.runtimeBase.keySet());
+            for (String key : keys1) {
+                Client value = Base.runtimeBase.get(key);
+                clients.add(new ClientPOJO(value));
+            }
+            Converter.toJSONClient(new ArrayClientsPOJO(clients));
+
+            List<AccountPOJO> accounts = new ArrayList<>();
+            List<String> keys2 = new ArrayList<>(Base.accountBase.keySet());
+            for (String key : keys2) {
+                Account value = Base.accountBase.get(key);
+                accounts.add(new AccountPOJO(value));
+            }
+            Converter.toJSONAccount(new ArrayAccountsPOJO(accounts));
+
+            //System.out.println(Converter.toJavaObject().toString());
+
+
+
+
             //String clientJson = ConvertJson.convertJsonArray(ConvertJson.convertTheClient(currClient));
 //            String clientJson = String.valueOf(ConvertJson.convertTheClient(currClient));
 //            IOStream.output(clientJson);
@@ -77,4 +109,5 @@ public class Main {
         }
         System.out.println("Good Bye!");
     }
+
 }

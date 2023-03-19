@@ -3,7 +3,6 @@ package org.example;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +28,16 @@ public class ArrayClientsPOJO {
 
         }
         return String.valueOf(stringBuilder);
+    }
+
+    public List<Client> toClientsArray() {
+        List<Client> array = new ArrayList<>();
+        for (ClientPOJO client:
+                clients) {
+            array.add(AbstractClient.toClient(client));
+
+        }
+        return array;
     }
 
 }

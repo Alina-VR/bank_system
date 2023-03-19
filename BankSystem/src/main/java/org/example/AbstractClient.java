@@ -24,14 +24,14 @@ abstract class AbstractClient {
 
     public AbstractClient(String userName, String userSurname,
                           String address, String passport,
-                          String login, String password, ArrayList<String> accounts) {
+                          String login, String password) {
         this.userName = userName;
         this.userSurname = userSurname;
         this.address = address;
         this.passport = passport;
         this.login = login;
         this.password = password;
-        this.accounts = accounts;
+        this.accounts = new ArrayList<String>(6);
 
     }
 
@@ -54,10 +54,13 @@ abstract class AbstractClient {
         client.userName = clientPOJO.getUserName();
         client.userSurname = clientPOJO.getUserSurname();
         client.address = clientPOJO.getAddress();
+        client.accounts = clientPOJO.getAccounts();
 
 
         return client;
     }
+
+
 
     @Override
     public String toString() {

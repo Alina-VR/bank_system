@@ -7,17 +7,29 @@ import java.io.IOException;
 
 public class Converter {
 
-    private final static String baseFile = "ClientsBase";
+    private final static String baseFile1 = "ClientsBase";
+    private final static String baseFile2 = "AccountsBase";
 
-    public static void toJSON(ArrayClientsPOJO arrayClientsPOJO) throws IOException {
+    public static void toJSONClient(ArrayClientsPOJO arrayClientsPOJO) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(new File(baseFile), arrayClientsPOJO);
+        mapper.writeValue(new File(baseFile1), arrayClientsPOJO);
         System.out.println("json created!");
     }
 
-    public static ArrayClientsPOJO toJavaObject() throws IOException {
+    public static ArrayClientsPOJO toJavaObjectClient() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(new File(baseFile), ArrayClientsPOJO.class);
+        return mapper.readValue(new File(baseFile1), ArrayClientsPOJO.class);
+    }
+
+    public static void toJSONAccount(ArrayAccountsPOJO arrayAccountsPOJOPOJO) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writeValue(new File(baseFile2), arrayAccountsPOJOPOJO);
+        System.out.println("json created!");
+    }
+
+    public static ArrayAccountsPOJO toJavaObjectAccount() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(new File(baseFile2), ArrayAccountsPOJO.class);
     }
 }
 

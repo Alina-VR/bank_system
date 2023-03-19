@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Client extends AbstractClient {
 
-    public Client(String userName, String userSurname, String address, String passport, String login, String password, ArrayList<String> accounts) {
-        super(userName, userSurname, address, passport, login, password, accounts);
+    public Client(String userName, String userSurname, String address, String passport, String login, String password) {
+        super(userName, userSurname, address, passport, login, password);
     }
 
     public Client(){ }
