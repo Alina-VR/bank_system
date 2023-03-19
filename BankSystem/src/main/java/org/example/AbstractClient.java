@@ -31,7 +31,7 @@ abstract class AbstractClient {
         this.passport = passport;
         this.login = login;
         this.password = password;
-        this.accounts = new ArrayList<String>(6);
+        this.accounts = new ArrayList<>(6);
 
     }
 

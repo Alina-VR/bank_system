@@ -57,6 +57,11 @@ public class Main {
         } else if (sign.equals("sign_up")) {
             currClient = ClientServer.signUp();
         }
+        for (String element : Base.accountBase.keySet()) {
+            if (element.contains(currClient.login)) {
+                currClient.accounts.add(element);
+            }
+        }
         System.out.println("Continue? (yes/no) ");
         while (!scanner.next().equals("no")) {
             System.out.println("There are your accounts here: ");
