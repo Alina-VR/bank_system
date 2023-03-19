@@ -1,6 +1,5 @@
 package org.example;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ClientServer {
@@ -9,7 +8,7 @@ public class ClientServer {
         Client currClient;
         System.out.println("Login: ");
         String login = scanner.next();
-        currClient = UnpackJSON.base.get(login);
+        currClient = Base.runtimeBase.get(login);
         System.out.println("Password: ");
         String password = scanner.next();
         while (!password.equals(currClient.password)) {
@@ -37,8 +36,6 @@ public class ClientServer {
 
         Client currClient = new Client(name, surname, address, passport, login, password);
         Base.runtimeBase.put(currClient.login, currClient);
-        ConvertToJSON.convert(currClient);
-        IOStream.output(ConvertToJSON.convert(currClient));
         return currClient;
     }
 

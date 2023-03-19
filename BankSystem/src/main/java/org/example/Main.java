@@ -3,11 +3,11 @@ package org.example;
 
 import lombok.SneakyThrows;
 
-import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -100,8 +100,6 @@ public class Main {
             Converter.toJSONAccount(new ArrayAccountsPOJO(accounts));
 
             //System.out.println(Converter.toJavaObject().toString());
-
-
 
 
             //String clientJson = ConvertJson.convertJsonArray(ConvertJson.convertTheClient(currClient));

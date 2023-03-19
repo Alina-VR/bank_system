@@ -44,6 +44,8 @@ public abstract class Account {
         return account;
     }
 
+    public abstract void checkBalance();
+
     @Override
     public String toString() {
         return ID + " " + login + " " + bankName + " " + accountType + " " + balance;
