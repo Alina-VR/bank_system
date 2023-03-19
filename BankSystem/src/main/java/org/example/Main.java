@@ -3,27 +3,50 @@ package org.example;
 
 import lombok.SneakyThrows;
 
-import javax.management.StringValueExp;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     @SneakyThrows
     public static void main(String[] args) {
-        ArrayClientsPOJO arrayClientsPOJO = Converter.toJavaObjectClient();
-        List<Client> array1 = arrayClientsPOJO.toClientsArray();
-        for (Client client:
-                array1) {
-            Base.runtimeBase.put(client.login, client);
+
+        File file1 = new File("ClientsBase");
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file1));
+            if (br.readLine() != null) {
+                ArrayClientsPOJO arrayClientsPOJO = Converter.toJavaObjectClient();
+                List<Client> array1 = arrayClientsPOJO.toClientsArray();
+                for (Client client :
+                        array1) {
+                    Base.runtimeBase.put(client.login, client);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        ArrayAccountsPOJO arrayAccountsPOJO = Converter.toJavaObjectAccount();
-        List<Account> array2 = arrayAccountsPOJO.toAccountsArray();
-        for (Account account:
-                array2) {
-            Base.accountBase.put(account.ID, account);
+
+        File file2 = new File("AccountsBase");
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file2));
+            if (br.readLine() != null) {
+                ArrayAccountsPOJO arrayAccountsPOJO = Converter.toJavaObjectAccount();
+                List<Account> array2 = arrayAccountsPOJO.toAccountsArray();
+                for (Account account:
+                        array2) {
+                    Base.accountBase.put(account.ID, account);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
         Base.addBanks();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose sign_in/ sign_up ");
