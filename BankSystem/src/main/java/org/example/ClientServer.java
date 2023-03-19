@@ -78,7 +78,8 @@ public class ClientServer {
     public static void workWithAccount(String element, Client currClient) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose the option: push/withdraw ");
-        if (scanner.next().equals("push")) {
+        String answer = scanner.next();
+        if (answer.equals("push")) {
             System.out.println("Write down the sum ");
             int sum = scanner.nextInt();
             for (Bank bank : Base.banks) {
@@ -98,7 +99,7 @@ public class ClientServer {
                     }
                 }
             }
-        } else if (scanner.next().equals("withdraw")) {
+        } else if (answer.equals("withdraw")) {
             System.out.println("Write down the sum ");
             int sum = scanner.nextInt();
             for (Bank bank : Base.banks) {
