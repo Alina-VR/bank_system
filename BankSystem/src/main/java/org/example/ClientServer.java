@@ -106,25 +106,24 @@ public class ClientServer {
             for (Bank bank : Base.banks) {
                 if (element.contains(bank.bankName)) { /// Bank -> bank
                     if (element.contains("debit")) {
-                        Debit currDebit = bank.debit(Base.accountBase.get(currClient.login).balance,
-                                Base.accountBase.get(currClient.login).login,
-                                Base.accountBase.get(currClient.login).bankName,
-                                Base.accountBase.get(currClient.login).accountType);
+                        Debit currDebit = bank.debit(Base.accountBase.get(element).balance,
+                                Base.accountBase.get(element).login,
+                                Base.accountBase.get(element).bankName,
+                                Base.accountBase.get(element).accountType);
 
                         currDebit.withdraw(sum);
-                        if (Base.accountBase.get(currClient.login).balance > 0) {
-                            Base.accountBase.get(currClient.login).balance -= sum;
+                        if (Base.accountBase.get(element).balance - sum > 0) {
+                            Base.accountBase.get(element).balance -= sum;
                         }
-                        Base.accountBase.get(element).balance -= sum;
                     } else if (element.contains("credit")) {
                         Credit currCredit = bank.credit(Base.accountBase.get(currClient.login).balance,
-                                Base.accountBase.get(currClient.login).login,
-                                Base.accountBase.get(currClient.login).bankName,
-                                Base.accountBase.get(currClient.login).accountType);
+                                Base.accountBase.get(element).login,
+                                Base.accountBase.get(element).bankName,
+                                Base.accountBase.get(element).accountType);
                         currCredit.withdraw(sum);
-                        if (Base.accountBase.get(currClient.login).balance < currCredit.creditLimit) {
-                            Base.accountBase.get(currClient.login).balance -= sum;
-                            currCredit.getDebt(Base.accountBase.get(currClient.login));
+                        if (Base.accountBase.get(element).balance < currCredit.creditLimit) {
+                            Base.accountBase.get(element).balance -= sum;
+                            currCredit.getDebt(Base.accountBase.get(element));
                         }
                     }
                 }

@@ -22,11 +22,11 @@ public class AccountPOJO {
 
 
     public AccountPOJO(Account account) {
-        this.ID = account.getID();
+        this.balance = account.getBalance();
         this.login = account.getLogin();
         this.bankName = account.getBankName();
         this.accountType = account.getAccountType();
-        this.balance = account.getBalance();
+        this.ID = account.getID();
     }
 
 
