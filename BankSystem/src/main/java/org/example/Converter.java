@@ -7,8 +7,8 @@ import java.io.IOException;
 
 public class Converter {
 
-    private final static String baseFile1 = "ClientsBase";
-    private final static String baseFile2 = "AccountsBase";
+    private final static String baseFile1 = "ClientsBase.json";
+    private final static String baseFile2 = "AccountsBase.json";
 
     public static void toJSONClient(ArrayClientsPOJO arrayClientsPOJO) throws IOException {
         ObjectMapper mapper = new ObjectMapper();

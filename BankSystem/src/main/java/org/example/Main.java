@@ -15,7 +15,7 @@ public class Main {
     @SneakyThrows
     public static void main(String[] args) {
 
-        File file1 = new File("ClientsBase");
+        File file1 = new File("ClientsBase.json");
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(file1));
@@ -31,7 +31,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        File file2 = new File("AccountsBase");
+        File file2 = new File("AccountsBase.json");
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(file2));
