@@ -6,10 +6,8 @@ public class IOStream {
 
         public static void output(String ClientsJson) {
 
-            try (FileOutputStream fos = new FileOutputStream("ClientsBase.txt")) {
-                // перевод строки в байты
+            try (FileOutputStream fos = new FileOutputStream("ClientsBase.json")) {
                 byte[] buffer = ClientsJson.getBytes();
-
                 fos.write(buffer, 0, buffer.length);
                 System.out.println("The file has been written");
             } catch (FileNotFoundException e) {
@@ -22,19 +20,18 @@ public class IOStream {
 
     public static String input() {
 
-        String arrayJsonTxt = null;
-        try (FileInputStream fin = new FileInputStream("ClientsBase.txt")) {
+        String arrayJson = null;
+        try (FileInputStream fin = new FileInputStream("ClientsBase.json")) {
             int i;
-            arrayJsonTxt = "";
+            arrayJson = "";
             while ((i = fin.read()) != -1) {
 
-                System.out.print((char) i);
-                arrayJsonTxt = new StringBuilder().append(arrayJsonTxt).append((char) i).toString();
+                arrayJson = String.valueOf(new StringBuilder().append(arrayJson).append((char) i));
             }
         } catch (IOException ex) {
 
             System.out.println(ex.getMessage());
         }
-        return arrayJsonTxt;
+        return arrayJson;
     }
 }
