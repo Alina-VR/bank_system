@@ -58,7 +58,7 @@ public class Main {
             currClient = ClientServer.signUp();
         }
         for (String element : Base.accountBase.keySet()) {
-            if (element.contains(currClient.login)) {
+            if (element.contains(currClient.login) && (!currClient.accounts.contains(element))) {
                 currClient.accounts.add(element);
             }
         }

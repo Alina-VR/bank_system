@@ -27,4 +27,5 @@ public class Debit extends Account {
     public void checkBalance() {
         System.out.println("Your balance is " + balance);
     }
+
 }

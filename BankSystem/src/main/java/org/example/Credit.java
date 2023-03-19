@@ -3,7 +3,7 @@ package org.example;
 public class Credit extends Account {
     int creditLimit;
     double fee;
-    int debt;
+    int creditDebt;
 
     public Credit(int balance, String login, String bankName, String accountType) {
         super(balance, login, bankName, accountType);
@@ -20,10 +20,10 @@ public class Credit extends Account {
     public void withdraw(int sum) {
         if (sum <= creditLimit) {
             balance -= sum;
-            debt += sum * (1 + fee);
+            creditDebt += sum * (1 + fee);
             System.out.println("Withdraw " + sum);
             System.out.println("Your new balance is " + balance);
-            System.out.println("Debt is " + debt);
+            System.out.println("Debt is " + creditDebt);
         } else {
             System.out.println("Exceed limit");
         }
@@ -34,4 +34,7 @@ public class Credit extends Account {
         System.out.println("Your balance is " + balance);
     }
 
+    public void getDebt(Account account) {
+        account.debt += creditDebt;
+    }
 }

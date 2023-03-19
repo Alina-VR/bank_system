@@ -46,8 +46,8 @@ public class ClientServer {
         Client client = Base.runtimeBase.get(currClient.login);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose Bank: ");
-        for (Bank element:
-             Base.banks) {
+        for (Bank element :
+                Base.banks) {
             System.out.println(element.bankName);
         }
         String bankName = scanner.next();
@@ -89,12 +89,14 @@ public class ClientServer {
                                 Base.accountBase.get(element).bankName,
                                 Base.accountBase.get(element).accountType);
                         currDebit.push(sum);
+                        Base.accountBase.get(element).balance += sum;
                     } else if (element.contains("credit")) {
                         Credit currCredit = bank.credit(Base.accountBase.get(element).balance,
                                 Base.accountBase.get(element).login,
                                 Base.accountBase.get(element).bankName,
                                 Base.accountBase.get(element).accountType);
                         currCredit.push(sum);
+                        Base.accountBase.get(element).balance += sum;
                     }
                 }
             }
@@ -110,12 +112,20 @@ public class ClientServer {
                                 Base.accountBase.get(currClient.login).accountType);
 
                         currDebit.withdraw(sum);
+                        if (Base.accountBase.get(currClient.login).balance > 0) {
+                            Base.accountBase.get(currClient.login).balance -= sum;
+                        }
+                        Base.accountBase.get(element).balance -= sum;
                     } else if (element.contains("credit")) {
                         Credit currCredit = bank.credit(Base.accountBase.get(currClient.login).balance,
                                 Base.accountBase.get(currClient.login).login,
                                 Base.accountBase.get(currClient.login).bankName,
                                 Base.accountBase.get(currClient.login).accountType);
                         currCredit.withdraw(sum);
+                        if (Base.accountBase.get(currClient.login).balance < currCredit.creditLimit) {
+                            Base.accountBase.get(currClient.login).balance -= sum;
+                            currCredit.getDebt(Base.accountBase.get(currClient.login));
+                        }
                     }
                 }
             }

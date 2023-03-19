@@ -6,6 +6,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public abstract class Account {
+    public int debt;
     public int balance;// TODO: домножать на 100 суммы
     public String login;
     public String bankName;
