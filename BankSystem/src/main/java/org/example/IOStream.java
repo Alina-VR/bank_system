@@ -1,6 +1,9 @@
 package org.example;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class IOStream {
 
@@ -20,21 +23,23 @@ public class IOStream {
             }
         }
 
+    static String arrayJsonTxt = "";
     public static String input() {
 
-        String arrayJsonTxt = null;
-        try (FileInputStream fin = new FileInputStream("ClientsBase.txt")) {
+        String arrayJson = null;
+        try (FileInputStream fin = new FileInputStream("ClientsBase.json")) {
             int i;
-            arrayJsonTxt = "";
+            arrayJson = "";
             while ((i = fin.read()) != -1) {
 
                 System.out.print((char) i);
-                arrayJsonTxt = new StringBuilder().append(arrayJsonTxt).append((char) i).toString();
+                arrayJsonTxt = arrayJsonTxt + (char) i;
             }
         } catch (IOException ex) {
 
             System.out.println(ex.getMessage());
         }
+        arrayJsonTxt = arrayJson;
         return arrayJsonTxt;
     }
 }

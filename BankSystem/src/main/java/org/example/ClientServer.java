@@ -8,7 +8,7 @@ public class ClientServer {
         Client currClient;
         System.out.println("Login: ");
         String login = scanner.next();
-        currClient = Base.runtimeBase.get(login);
+        currClient = UnpackJSON.base.get(login);
         System.out.println("Password: ");
         String password = scanner.next();
         while (!password.equals(currClient.password)) {
@@ -36,6 +36,8 @@ public class ClientServer {
 
         Client currClient = new Client(name, surname, address, passport, login, password, null);
         Base.runtimeBase.put(currClient.login, currClient);
+        ConvertToJSON.convert(currClient);
+        IOStream.output(ConvertToJSON.convert(currClient));
         return currClient;
     }
 

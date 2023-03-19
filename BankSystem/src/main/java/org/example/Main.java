@@ -39,9 +39,6 @@ public class Main {
                     }
                 }
             }
-            String clientJson = ConvertJson.convertJsonArray(ConvertJson.convertTheClient(currClient));
-            IOStream.output(clientJson);
-            IOStream.input();
             System.out.println("Do you want to continue? (yes/no) ");
         }
         System.out.println("Good Bye!");
