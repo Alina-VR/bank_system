@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/banksystem.iml" filepath="$PROJECT_DIR$/banksystem.iml" />
-      <module fileurl="file://$PROJECT_DIR$/BankSystem/src/main/resources/untitled.iml" filepath="$PROJECT_DIR$/BankSystem/src/main/resources/untitled.iml" />
     </modules>
   </component>
 </project>
