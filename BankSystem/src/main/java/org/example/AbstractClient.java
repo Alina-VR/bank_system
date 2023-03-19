@@ -1,7 +1,13 @@
 package org.example;
 
-import java.util.ArrayList;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Setter
+@Getter
 abstract class AbstractClient {
     String userName;
     String userSurname;
@@ -9,7 +15,7 @@ abstract class AbstractClient {
     String passport;
     String login;
     String password;
-    ArrayList<String> accounts;
+    List<String> accounts;
 
     //ID
     ///public int findLogin(String userName, String userSurname) {
@@ -18,14 +24,14 @@ abstract class AbstractClient {
 
     public AbstractClient(String userName, String userSurname,
                           String address, String passport,
-                          String login, String password, ArrayList<String> accounts) {
+                          String login, String password) {
         this.userName = userName;
         this.userSurname = userSurname;
         this.address = address;
         this.passport = passport;
         this.login = login;
         this.password = password;
-        this.accounts = accounts;
+        this.accounts = new ArrayList<String>(6);
 
     }
 
@@ -39,6 +45,22 @@ abstract class AbstractClient {
         this.accounts = null;
 
     }
+
+    public static Client toClient(ClientPOJO clientPOJO) {
+        Client client = new Client();
+        client.login = clientPOJO.getLogin();
+        client.passport = clientPOJO.getPassport();
+        client.password = clientPOJO.getPassword();
+        client.userName = clientPOJO.getUserName();
+        client.userSurname = clientPOJO.getUserSurname();
+        client.address = clientPOJO.getAddress();
+        client.accounts = clientPOJO.getAccounts();
+
+
+        return client;
+    }
+
+
 
     @Override
     public String toString() {

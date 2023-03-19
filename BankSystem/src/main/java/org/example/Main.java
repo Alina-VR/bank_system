@@ -1,10 +1,29 @@
 package org.example;
 
 
+import lombok.SneakyThrows;
+
+import javax.management.StringValueExp;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+    @SneakyThrows
     public static void main(String[] args) {
+        ArrayClientsPOJO arrayClientsPOJO = Converter.toJavaObjectClient();
+        List<Client> array1 = arrayClientsPOJO.toClientsArray();
+        for (Client client:
+                array1) {
+            Base.runtimeBase.put(client.login, client);
+        }
+        ArrayAccountsPOJO arrayAccountsPOJO = Converter.toJavaObjectAccount();
+        List<Account> array2 = arrayAccountsPOJO.toAccountsArray();
+        for (Account account:
+                array2) {
+            Base.accountBase.put(account.ID, account);
+        }
         Base.addBanks();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose sign_in/ sign_up ");
@@ -39,8 +58,56 @@ public class Main {
                     }
                 }
             }
+
+
+            List<ClientPOJO> clients = new ArrayList<>();
+            List<String> keys1 = new ArrayList<>(Base.runtimeBase.keySet());
+            for (String key : keys1) {
+                Client value = Base.runtimeBase.get(key);
+                clients.add(new ClientPOJO(value));
+            }
+            Converter.toJSONClient(new ArrayClientsPOJO(clients));
+
+            List<AccountPOJO> accounts = new ArrayList<>();
+            List<String> keys2 = new ArrayList<>(Base.accountBase.keySet());
+            for (String key : keys2) {
+                Account value = Base.accountBase.get(key);
+                accounts.add(new AccountPOJO(value));
+            }
+            Converter.toJSONAccount(new ArrayAccountsPOJO(accounts));
+
+            //System.out.println(Converter.toJavaObject().toString());
+
+
+
+
+            //String clientJson = ConvertJson.convertJsonArray(ConvertJson.convertTheClient(currClient));
+//            String clientJson = String.valueOf(ConvertJson.convertTheClient(currClient));
+//            IOStream.output(clientJson);
+//            String gson = IOStream.input();
+//            System.out.println(gson);
+//            ArrayClientsPOJO newArray = UnpackJson.getClientJson(gson);
+//            List<ClientPOJO> clients = newArray.getClients();
+//            List<Client> clients1 = new ArrayList<>();
+//            for (ClientPOJO element:
+//                 clients) {
+//                clients1.add(Client.toClient(element));
+//
+//            }
+//
+//            for (Client element:
+//                 clients1) {
+//                System.out.println(element.login);
+//
+//            }
+
+            ///Client newClient =  new Client();
+            ///ClientPOJO newClientPOJO = UnpackJson.getClientJson(gson);
+            ///newClient.login = newClientPOJO.login;
+            ///System.out.println(newClient.login);
             System.out.println("Do you want to continue? (yes/no) ");
         }
         System.out.println("Good Bye!");
     }
+
 }

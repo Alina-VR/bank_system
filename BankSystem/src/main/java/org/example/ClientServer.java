@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ClientServer {
@@ -34,7 +35,7 @@ public class ClientServer {
         System.out.println("Password: ");
         String password = scanner.next();
 
-        Client currClient = new Client(name, surname, address, passport, login, password, null);
+        Client currClient = new Client(name, surname, address, passport, login, password);
         Base.runtimeBase.put(currClient.login, currClient);
         ConvertToJSON.convert(currClient);
         IOStream.output(ConvertToJSON.convert(currClient));
@@ -42,6 +43,7 @@ public class ClientServer {
     }
 
     public static Account createAccount(Client currClient) {
+        Client client = Base.runtimeBase.get(currClient.login);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose Bank: ");
         for (Bank element :
@@ -56,10 +58,13 @@ public class ClientServer {
             currAccount = new Debit(0, currClient.login, bankName, accountType);
             currAccount.setID(currClient.login, bankName, accountType);
             Base.accountBase.put(currAccount.ID, currAccount);
+            System.out.println(client.accounts);
+            //client.accounts.add(currAccount.ID);
         } else if (accountType.equals("credit")) {
             currAccount = new Credit(0, currClient.login, bankName, accountType);
             currAccount.setID(currClient.login, bankName, accountType);
             Base.accountBase.put(currAccount.ID, currAccount);
+            //client.accounts.add(currAccount.ID);
         } else {
             System.out.println("Error");
             return null;
