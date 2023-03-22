@@ -3,7 +3,7 @@
 digraph g {
     rankdir="TB"
     splines=ortho
-    
+    nodesep=2
 
 'nodes 
 subgraph cluster_1322970774 { 
@@ -11,7 +11,6 @@ subgraph cluster_1322970774 {
 	labeljust=l
 	fillcolor="#ececec"
 	style=filled
-   
    AbstractClient1526836320[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
 <TR><TD ALIGN="LEFT" >(C)AbstractClient</TD></TR>
