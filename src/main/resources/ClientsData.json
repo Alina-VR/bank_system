@@ -1,0 +1,19 @@
+{
+  "Clients" : [ {
+    "Login" : "AlinaVR",
+    "Password" : "666",
+    "Accounts" : [ "AlinaVRVTBcredit", "AlinaVRTinkoffdebit" ],
+    "UserName" : "alina",
+    "UserSurname" : "raznosilina",
+    "Address" : "tula",
+    "Passport" : "0000"
+  }, {
+    "Login" : "errmad",
+    "Password" : "666",
+    "Accounts" : [ ],
+    "UserName" : "elena",
+    "UserSurname" : "ermakova",
+    "Address" : "moscow",
+    "Passport" : "0000"
+  } ]
+}
