@@ -1,0 +1,442 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": false,
+    "cutTests": false,
+    "cutClient": false,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": false,
+    "cutConstructors": false
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 7,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "org.example.Main",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=ortho
+    
+
+'nodes 
+subgraph cluster_1322970774 { 
+   	label="UML Diagram"
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Main1526836320[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Main</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- Main()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+subgraph cluster_134846034 { 
+   	label=data
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   Converter2051917704[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Converter</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- Converter()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ toJSONAccount(accountsList: AccountsList)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ toJSONBank(banksList: BanksList)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ toJSONClient(clientsList: ClientsList)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ toJavaObjectAccount(): AccountsList</TD></TR>
+<TR><TD ALIGN="LEFT" >+ toJavaObjectBank(): BanksList</TD></TR>
+<TR><TD ALIGN="LEFT" >+ toJavaObjectClient(): ClientsList</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+IoService2051917704[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)IoService</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- IoService()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ inputAccountsData()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ inputBanksData()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ inputClientsData()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ outputAccountsData()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ outputBanksData()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ outputClientsData()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_134905792 { 
+   	label=bank
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   AbstractBank2051977462[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AbstractBank</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   accounts: List&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   bankName: String </TD></TR>
+<TR><TD ALIGN="LEFT" >-   creditLimit: int </TD></TR>
+<TR><TD ALIGN="LEFT" >-   fee: double </TD></TR>
+<TR><TD ALIGN="LEFT" >-   registrationID: String </TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ AbstractBank(bankName: String, registrationID: String, creditLimit: int, fee: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ AbstractBank()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAccounts(): List&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getBankName(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCreditLimit(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getFee(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getRegistrationID(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setAccounts(accounts: List&lt;String&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setBankName(bankName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setCreditLimit(creditLimit: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setFee(fee: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setRegistrationID(registrationID: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Bank2051977462[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Bank</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Bank(bankName: String, registrationID: String, creditLimit: int, fee: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Bank()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+BankService2051977462[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)BankService</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- BankService()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ seeAccounts(bank: Bank)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ seeInformation(bank: Bank)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ signIn(): Bank</TD></TR>
+<TR><TD ALIGN="LEFT" >+ signUp(): Bank</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+BanksList2051977462[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)BanksList</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   banks: List&lt;Bank&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ BanksList(banks: List&lt;Bank&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ BanksList()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getBanks(): List&lt;Bank&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setBanks(banks: List&lt;Bank&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ toBanksArray(): List&lt;Bank&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_270770601 { 
+   	label=account
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   AbstractAccount1031215457[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AbstractAccount</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   accountType: String </TD></TR>
+<TR><TD ALIGN="LEFT" >-   bankName: String </TD></TR>
+<TR><TD ALIGN="LEFT" >-   id: String </TD></TR>
+<TR><TD ALIGN="LEFT" >-   login: String </TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ AbstractAccount(login: String, bankName: String, accountType: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ checkBalance()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ createId(login: String, bankName: String, accountType: String): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAccountType(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getBankName(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getId(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLogin(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ push(sum: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setAccountType(accountType: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setBankName(bankName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setId(id: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setLogin(login: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ withdraw(sum: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AccountsList1031215457[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AccountsList</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   credits: List&lt;Credit&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   debits: List&lt;Debit&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ AccountsList(debits: List&lt;Debit&gt;, credits: List&lt;Credit&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" ># AccountsList()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCredits(): List&lt;Credit&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDebits(): List&lt;Debit&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setCredits(credits: List&lt;Credit&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setDebits(debits: List&lt;Debit&gt;)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Credit1031215457[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Credit</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   creditDebt: int </TD></TR>
+<TR><TD ALIGN="LEFT" >-   creditLimit: int </TD></TR>
+<TR><TD ALIGN="LEFT" >-   fee: double </TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Credit()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Credit(login: String, bankName: String, accountType: String, creditDebt: int, creditLimit: int, fee: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ checkBalance()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCreditDebt(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCreditLimit(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getFee(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ push(sum: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setCreditDebt(creditDebt: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setCreditLimit(creditLimit: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setFee(fee: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ withdraw(sum: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Debit1031215457[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Debit</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   balance: int </TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Debit(login: String, bankName: String, accountType: String, balance: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Debit()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ checkBalance()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getBalance(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ push(sum: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setBalance(balance: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ withdraw(sum: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_756810545 { 
+   	label=client
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   AbstractClient521715431[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AbstractClient</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   accounts: List&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   address: String </TD></TR>
+<TR><TD ALIGN="LEFT" >-   login: String </TD></TR>
+<TR><TD ALIGN="LEFT" >-   passport: String </TD></TR>
+<TR><TD ALIGN="LEFT" >-   password: String </TD></TR>
+<TR><TD ALIGN="LEFT" >-   userName: String </TD></TR>
+<TR><TD ALIGN="LEFT" >-   userSurname: String </TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ AbstractClient(userName: String, userSurname: String, address: String, passport: String, login: String, password: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ AbstractClient()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAccounts(): List&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAddress(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLogin(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPassword(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getUserName(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getUserSurname(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setAccounts(accounts: List&lt;String&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setAddress(address: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setLogin(login: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setPassword(password: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setUserName(userName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setUserSurname(userSurname: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Client521715431[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Client</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Client(userName: String, userSurname: String, address: String, passport: String, login: String, password: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Client()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ClientService521715431[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ClientService</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- ClientService()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ createAccount(currClient: Client): AbstractAccount</TD></TR>
+<TR><TD ALIGN="LEFT" >+ push(element: String, currClient: Client)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ signIn(): Client</TD></TR>
+<TR><TD ALIGN="LEFT" >+ signUp(): Client</TD></TR>
+<TR><TD ALIGN="LEFT" >+ transfer(yourAccountID: String, currClient: Client)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ withdraw(element: String, currClient: Client)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ workWithAccount(element: String, currClient: Client)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ClientsList521715431[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ClientsList</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   clients: List&lt;Client&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ ClientsList(clients: List&lt;Client&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ ClientsList()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getClients(): List&lt;Client&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setClients(clients: List&lt;Client&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ toClientsArray(): List&lt;Client&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+AbstractAccount1031215457 -> Credit1031215457[arrowhead=none, arrowtail=empty, dir=both];
+AbstractAccount1031215457 -> Debit1031215457[arrowhead=none, arrowtail=empty, dir=both];
+AbstractBank2051977462 -> Bank2051977462[arrowhead=none, arrowtail=empty, dir=both];
+AbstractClient521715431 -> Client521715431[arrowhead=none, arrowtail=empty, dir=both];
+AccountsList1031215457 -> Credit1031215457[arrowhead=none, arrowtail=ediamond, dir=both];
+AccountsList1031215457 -> Debit1031215457[arrowhead=none, arrowtail=ediamond, dir=both];
+BankService2051977462 -> Bank2051977462[];
+BanksList2051977462 -> Bank2051977462[arrowhead=none, arrowtail=ediamond, dir=both];
+ClientService521715431 -> Client521715431[];
+ClientsList521715431 -> Client521715431[arrowhead=none, arrowtail=ediamond, dir=both];
+IoService2051917704 -> AbstractBank2051977462[];
+IoService2051917704 -> AbstractClient521715431[];
+Main1526836320 -> AbstractAccount1031215457[arrowhead=open, arrowtail=none, dir=both];
+Main1526836320 -> Bank2051977462[arrowhead=open, arrowtail=none, dir=both];
+Main1526836320 -> Client521715431[arrowhead=open, arrowtail=none, dir=both];
+    
+}
+@enduml
