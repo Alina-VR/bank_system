@@ -1,18 +1,24 @@
 {
   "Debits" : [ {
-    "ID" : "AlinaVRTinkoffdebit",
-    "login" : "AlinaVR",
-    "bankName" : "Tinkoff",
+    "ID" : "aVTBdebit",
+    "login" : "a",
+    "bankName" : "VTB",
     "accountType" : "debit",
-    "balance" : 0
+    "balance" : 1000
+  }, {
+    "ID" : "aSberBankdebit",
+    "login" : "a",
+    "bankName" : "SberBank",
+    "accountType" : "debit",
+    "balance" : 1000
   } ],
   "Credits" : [ {
-    "ID" : "AlinaVRVTBcredit",
-    "login" : "AlinaVR",
+    "ID" : "aVTBcredit",
+    "login" : "a",
     "bankName" : "VTB",
     "accountType" : "credit",
-    "creditLimit" : 30000000,
+    "creditLimit" : 1000000,
     "fee" : 0.5,
-    "creditDebt" : 4000
+    "creditDebt" : 1000
   } ]
 }

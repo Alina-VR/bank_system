@@ -13,14 +13,5 @@ public final class Data {
 
     private Data() {
     }
-
-//    public static void addBanks() {
-//        BANKS.add(BankMaker.FIRST_BANK);
-//        BANKS.add(BankMaker.SECOND_BANK);
-//        BANKS.add(BankMaker.THIRD_BANK);
-//    }
 }
-
-
-
 

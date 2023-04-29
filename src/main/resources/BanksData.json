@@ -1,21 +1,15 @@
 {
   "Banks" : [ {
     "BankName" : "VTB",
-    "RegistrationID" : "508",
-    "Accounts" : [ "AlinaVRVTBcredit" ],
-    "CreditLimit" : 30000000,
-    "Fee" : 0.5
-  }, {
-    "BankName" : "Tinkoff",
-    "RegistrationID" : "100",
-    "Accounts" : [ "AlinaVRTinkoffdebit" ],
-    "CreditLimit" : 50000,
-    "Fee" : 1.0
-  }, {
-    "BankName" : "Sber",
-    "RegistrationID" : "100",
+    "RegistrationID" : "aaa",
     "Accounts" : [ ],
-    "CreditLimit" : 20000,
-    "Fee" : 1.0
+    "CreditLimit" : 1000000,
+    "Fee" : 0.0
+  }, {
+    "BankName" : "SberBank",
+    "RegistrationID" : "bbb",
+    "Accounts" : [ ],
+    "CreditLimit" : 2000000,
+    "Fee" : 0.0
   } ]
 }
