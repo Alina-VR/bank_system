@@ -38,7 +38,9 @@ public class Debit extends AbstractAccount {
             System.out.println("Withdraw " + sum);
             System.out.println("Your new balance is " + balance);
         } else {
-            System.out.println("Insufficient funds");
+            System.out.println("You can withdraw only " + balance);
+            balance = 0;
+            System.out.println("Your new balance is " + balance);
         }
     }
 

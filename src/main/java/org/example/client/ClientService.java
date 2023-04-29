@@ -1,18 +1,24 @@
 package org.example.client;
 
-import java.util.Scanner;
 import org.example.account.AbstractAccount;
 import org.example.account.Credit;
 import org.example.account.Debit;
 import org.example.bank.Bank;
 import org.example.data.Data;
 
+import java.util.Scanner;
+
 public final class ClientService {
     private ClientService() {
     }
 
+    public static void reset() {
+        scanner = new Scanner(System.in);
+    }
+
+    static Scanner scanner;
+
     public static Client signIn() {
-        Scanner scanner = new Scanner(System.in);
         Client currClient;
 
         System.out.println("Login: ");
@@ -35,7 +41,6 @@ public final class ClientService {
     }
 
     public static Client signUp() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Name: ");
         String name = scanner.next();
 
@@ -54,15 +59,13 @@ public final class ClientService {
         System.out.println("Password: ");
         String password = scanner.next();
 
-        Client currClient =
-                new Client(name, surname, address, passport, login, password);
+        Client currClient = new Client(name, surname, address, passport, login, password);
         Data.RUNTIME_DATA.put(currClient.getLogin(), currClient);
         return currClient;
     }
 
     public static AbstractAccount createAccount(final Client currClient) {
         Client client = Data.RUNTIME_DATA.get(currClient.getLogin());
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Choose Bank: ");
 
         for (Bank element : Data.BANKS.values()) {
@@ -76,14 +79,12 @@ public final class ClientService {
         AbstractAccount currAbstractAccount;
 
         if (accountType.equals("debit")) {
-            currAbstractAccount =
-                    new Debit(currClient.getLogin(), bankName, accountType, 0);
+            currAbstractAccount = new Debit(currClient.getLogin(), bankName, accountType, 0);
             Data.ACCOUNT_DATA.put(currAbstractAccount.getId(), currAbstractAccount);
 
         } else if (accountType.equals("credit")) {
-            currAbstractAccount =
-                    new Credit(currClient.getLogin(), bankName, accountType,
-                            0, currBank.getCreditLimit(), currBank.getFee());
+            currAbstractAccount = new Credit(currClient.getLogin(), bankName, accountType, 0, currBank.getCreditLimit(),
+                currBank.getFee());
             Data.ACCOUNT_DATA.put(currAbstractAccount.getId(), currAbstractAccount);
 
         } else {
@@ -96,9 +97,7 @@ public final class ClientService {
         return currAbstractAccount;
     }
 
-    public static void workWithAccount(final String element,
-                                       final Client currClient) {
-        Scanner scanner = new Scanner(System.in);
+    public static void workWithAccount(final String element, final Client currClient) {
         if (element.contains("debit")) {
             System.out.println("Choose the option: push/withdraw/transfer ");
 
@@ -116,32 +115,26 @@ public final class ClientService {
         }
     }
 
-    public static void push(final String element,
-                            final Client currClient) {
-        Scanner scanner = new Scanner(System.in);
+    public static void push(final String element, final Client currClient) {
         System.out.println("Write down the sum ");
         int sum = scanner.nextInt();
 
         for (Bank bank : Data.BANKS.values()) {
             if (element.contains(bank.getBankName())) {
                 if (element.contains("debit")) {
-                    Debit currDebit = new Debit(
-                            Data.ACCOUNT_DATA.get(element).getLogin(),
-                            Data.ACCOUNT_DATA.get(element).getBankName(),
-                            Data.ACCOUNT_DATA.get(element).getAccountType(),
-                            ((Debit) Data.ACCOUNT_DATA.get(element)).getBalance());
+                    Debit currDebit = new Debit(Data.ACCOUNT_DATA.get(element).getLogin(),
+                        Data.ACCOUNT_DATA.get(element).getBankName(), Data.ACCOUNT_DATA.get(element).getAccountType(),
+                        ((Debit) Data.ACCOUNT_DATA.get(element)).getBalance());
 
                     currDebit.push(sum);
                     Data.ACCOUNT_DATA.put(element, currDebit);
 
                 } else if (element.contains("credit")) {
-                    Credit currCredit = new Credit(
-                            Data.ACCOUNT_DATA.get(element).getLogin(),
-                            Data.ACCOUNT_DATA.get(element).getBankName(),
-                            Data.ACCOUNT_DATA.get(element).getAccountType(),
-                            ((Credit) Data.ACCOUNT_DATA.get(element)).getCreditDebt(),
-                            ((Credit) Data.ACCOUNT_DATA.get(element)).getCreditLimit(),
-                            ((Credit) Data.ACCOUNT_DATA.get(element)).getFee());
+                    Credit currCredit = new Credit(Data.ACCOUNT_DATA.get(element).getLogin(),
+                        Data.ACCOUNT_DATA.get(element).getBankName(), Data.ACCOUNT_DATA.get(element).getAccountType(),
+                        ((Credit) Data.ACCOUNT_DATA.get(element)).getCreditDebt(),
+                        ((Credit) Data.ACCOUNT_DATA.get(element)).getCreditLimit(),
+                        ((Credit) Data.ACCOUNT_DATA.get(element)).getFee());
 
                     currCredit.push(sum);
                     Data.ACCOUNT_DATA.put(element, currCredit);
@@ -150,9 +143,7 @@ public final class ClientService {
         }
     }
 
-    public static void withdraw(final String element,
-                                final Client currClient) {
-        Scanner scanner = new Scanner(System.in);
+    public static void withdraw(final String element, final Client currClient) {
         System.out.println("Write down the sum ");
         int sum = scanner.nextInt();
 
@@ -160,23 +151,19 @@ public final class ClientService {
             if (element.contains(bank.getBankName())) {
 
                 if (element.contains("debit")) {
-                    Debit currDebit = new Debit(
-                            Data.ACCOUNT_DATA.get(element).getLogin(),
-                            Data.ACCOUNT_DATA.get(element).getBankName(),
-                            Data.ACCOUNT_DATA.get(element).getAccountType(),
-                            ((Debit) Data.ACCOUNT_DATA.get(element)).getBalance());
+                    Debit currDebit = new Debit(Data.ACCOUNT_DATA.get(element).getLogin(),
+                        Data.ACCOUNT_DATA.get(element).getBankName(), Data.ACCOUNT_DATA.get(element).getAccountType(),
+                        ((Debit) Data.ACCOUNT_DATA.get(element)).getBalance());
 
                     currDebit.withdraw(sum);
                     Data.ACCOUNT_DATA.put(element, currDebit);
 
                 } else if (element.contains("credit")) {
-                    Credit currCredit = new Credit(
-                            Data.ACCOUNT_DATA.get(element).getLogin(),
-                            Data.ACCOUNT_DATA.get(element).getBankName(),
-                            Data.ACCOUNT_DATA.get(element).getAccountType(),
-                            ((Credit) Data.ACCOUNT_DATA.get(element)).getCreditDebt(),
-                            ((Credit) Data.ACCOUNT_DATA.get(element)).getCreditLimit(),
-                            ((Credit) Data.ACCOUNT_DATA.get(element)).getFee());
+                    Credit currCredit = new Credit(Data.ACCOUNT_DATA.get(element).getLogin(),
+                        Data.ACCOUNT_DATA.get(element).getBankName(), Data.ACCOUNT_DATA.get(element).getAccountType(),
+                        ((Credit) Data.ACCOUNT_DATA.get(element)).getCreditDebt(),
+                        ((Credit) Data.ACCOUNT_DATA.get(element)).getCreditLimit(),
+                        ((Credit) Data.ACCOUNT_DATA.get(element)).getFee());
 
                     currCredit.withdraw(sum);
                     Data.ACCOUNT_DATA.put(element, currCredit);
@@ -185,12 +172,9 @@ public final class ClientService {
         }
     }
 
-    public static void transfer(final String yourAccountID,
-                                final Client currClient) {
-        Scanner scanner = new Scanner(System.in);
+    public static void transfer(final String yourAccountID, final Client currClient) {
         Debit yourAccount = (Debit) Data.ACCOUNT_DATA.get(yourAccountID);
-        System.out.println("Choose debit account which you want "
-                + "to transfer your money to");
+        System.out.println("Choose debit account which you want " + "to transfer your money to");
         for (AbstractAccount goalAccount : Data.ACCOUNT_DATA.values()) {
             if (goalAccount.getId().contains("debit")) {
                 System.out.println(goalAccount.getId());

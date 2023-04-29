@@ -37,7 +37,8 @@ public class Credit extends AbstractAccount {
             System.out.println("Your loan is fully repaid");
             System.out.println("Your change is " + change);
         } else {
-            System.out.println("Your loan has already been repaid, ");
+            creditDebt = 0;
+            System.out.println("Your loan has already been repaid ");
         }
         System.out.println("Now your debt is " + getCreditDebt());
     }
@@ -55,7 +56,8 @@ public class Credit extends AbstractAccount {
             System.out.println("You can withdraw only " + withdraw);
             System.out.println("Now your debt is " + creditLimit);
         } else {
-            System.out.println("Exceed limit, your debt is" + creditLimit);
+            creditDebt = creditLimit;
+            System.out.println("Exceed limit, your debt is " + creditDebt);
         }
     }
 

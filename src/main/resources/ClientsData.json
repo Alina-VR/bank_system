@@ -1,19 +1,19 @@
 {
   "Clients" : [ {
-    "Login" : "AlinaVR",
-    "Password" : "666",
-    "Accounts" : [ "AlinaVRVTBcredit", "AlinaVRTinkoffdebit" ],
-    "UserName" : "alina",
-    "UserSurname" : "raznosilina",
-    "Address" : "tula",
-    "Passport" : "0000"
-  }, {
-    "Login" : "errmad",
-    "Password" : "666",
+    "Login" : "a",
+    "Password" : "a",
     "Accounts" : [ ],
-    "UserName" : "elena",
-    "UserSurname" : "ermakova",
+    "UserName" : "a",
+    "UserSurname" : "b",
     "Address" : "moscow",
-    "Passport" : "0000"
+    "Passport" : "000"
+  }, {
+    "Login" : "b",
+    "Password" : "b",
+    "Accounts" : [ ],
+    "UserName" : "b",
+    "UserSurname" : "a",
+    "Address" : "moscow",
+    "Passport" : "000"
   } ]
 }
