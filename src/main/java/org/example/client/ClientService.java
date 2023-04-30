@@ -9,14 +9,14 @@ import org.example.data.Data;
 import java.util.Scanner;
 
 public final class ClientService {
+    static Scanner scanner;
+
     private ClientService() {
     }
 
     public static void reset() {
         scanner = new Scanner(System.in);
     }
-
-    static Scanner scanner;
 
     public static Client signIn() {
         Client currClient;
