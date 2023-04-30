@@ -1,12 +1,11 @@
 package org.example.client;
 
+import java.util.Scanner;
 import org.example.account.AbstractAccount;
 import org.example.account.Credit;
 import org.example.account.Debit;
 import org.example.bank.Bank;
 import org.example.data.Data;
-
-import java.util.Scanner;
 
 public final class ClientService {
     static Scanner scanner;
