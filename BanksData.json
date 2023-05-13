@@ -1,0 +1,15 @@
+{
+  "Banks" : [ {
+    "BankName" : "VTB",
+    "RegistrationID" : "100",
+    "Accounts" : [ "aVTBdebit", "aVTBcredit", "cVTBdebit" ],
+    "CreditLimit" : 1000000,
+    "Fee" : 0.5
+  }, {
+    "BankName" : "SberBank",
+    "RegistrationID" : "100",
+    "Accounts" : [ "aSberBankdebit" ],
+    "CreditLimit" : 10000000,
+    "Fee" : 0.7
+  } ]
+}

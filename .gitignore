@@ -1,0 +1,9 @@
+/target/
+/back/target/
+/back/.idea/
+/front/target/
+/front/.idea/
+/.idea/
+/back/htmlReport/
+/front/front.iml
+/back/back.iml

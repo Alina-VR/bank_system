@@ -1,0 +1,30 @@
+{
+  "Debits" : [ {
+    "ID" : "aVTBdebit",
+    "login" : "a",
+    "bankName" : "VTB",
+    "accountType" : "debit",
+    "balance" : 9000
+  }, {
+    "ID" : "aSberBankdebit",
+    "login" : "a",
+    "bankName" : "SberBank",
+    "accountType" : "debit",
+    "balance" : 1090
+  }, {
+    "ID" : "cVTBdebit",
+    "login" : "c",
+    "bankName" : "VTB",
+    "accountType" : "debit",
+    "balance" : 1000
+  } ],
+  "Credits" : [ {
+    "ID" : "aVTBcredit",
+    "login" : "a",
+    "bankName" : "VTB",
+    "accountType" : "credit",
+    "creditLimit" : 1000000,
+    "fee" : 0.5,
+    "creditDebt" : 100
+  } ]
+}
