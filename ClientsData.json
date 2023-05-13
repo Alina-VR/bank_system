@@ -1,0 +1,19 @@
+{
+  "Clients" : [ {
+    "Login" : "a",
+    "Password" : "a",
+    "Accounts" : [ "aVTBdebit", "aSberBankdebit", "aVTBcredit" ],
+    "UserName" : "a",
+    "UserSurname" : "a",
+    "Address" : "a",
+    "Passport" : "0"
+  }, {
+    "Login" : "c",
+    "Password" : "c",
+    "Accounts" : [ "cVTBdebit" ],
+    "UserName" : "c",
+    "UserSurname" : "c",
+    "Address" : "c",
+    "Passport" : "0"
+  } ]
+}
