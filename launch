@@ -1,5 +1,0 @@
-#!/bin/bash
-
-mvn clean package
-java -jar target/bankSystem-1.0.0-jar-with-dependencies.jar
-
