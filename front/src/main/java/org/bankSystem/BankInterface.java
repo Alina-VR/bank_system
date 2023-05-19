@@ -14,43 +14,96 @@ public final class BankInterface {
     public static void bank() {
         Scanner scanner = new Scanner(System.in);
 
-        Bank currBank = bankAuthorization();
+        Bank currBank = bankAuthorization(true);
 
-        while (!scanner.next().equals("no")) {
+        while (!scanner.next().equals("n")) {
 
             bankWork(currBank);
 
             Data.saveData("b");
-            System.out.println("Continue? (yes/no) ");
+            System.out.println("Do you want to continue? (y/n) ");
         }
         System.out.println("Good Bye!");
     }
 
-    public static Bank bankAuthorization() {
+    public static Bank bankAuthorization(boolean firstTime) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Choose sign_in/ sign_up ");
+        System.out.println("Choose sign_in (1) / sign_up (2)");
         String sign = scanner.next();
         Bank currBank = new Bank();
 
-        if (sign.equals("sign_in")) {
+        if (sign.equals("1")) {
             currBank = Authorization.bankSignIn();
 
-        } else if (sign.equals("sign_up")) {
+        } else if (sign.equals("2")) {
             currBank = Authorization.bankSignUp();
+        } else {
+            System.out.println("Please, enter only symbols from brackets. Do you want to continue? (y/n)");
+            String answer = scanner.next();
+            if (answer.equals("y")) {
+                currBank = bankAuthorization(false);
+            } else if (answer.equals("n")) {
+                System.out.println("Good bye!");
+                System.exit(0);
+            } else {
+                System.out.println("Please, type y or n");
+                String secondAnswer = scanner.next();
+                if (secondAnswer.equals("y")) {
+                    currBank = bankAuthorization(false);
+                } else if (secondAnswer.equals("n")) {
+                    System.out.println("Good bye!");
+                    System.exit(0);
+                } else {
+                    System.out.print("Sorry, our program can't understand your requests. ");
+                    System.out.println("Please, read README.md to use it");
+                    System.exit(0);
+                }
+            }
         }
         Data.saveData("b");
-        System.out.println("Continue? (yes/no) ");
+        if (firstTime) {
+            System.out.println("Continue? (y/n) ");
+        }
         return currBank;
     }
 
     public static void bankWork(Bank currBank) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Do you want to see the accounts list (1) "
-                + "or information about bank (2)? Type 1 or 2");
-        if (scanner.nextInt() == 1) {
-            BankService.seeAccounts(currBank);
-        } else {
-            BankService.seeInformation(currBank);
+        System.out.println("Choose the option:");
+        System.out.println("-> see the accounts list (1)");
+        System.out.println("-> see information about bank (2)");
+        System.out.println("-> see account information (3)");
+        System.out.println("-> suspect account (4)");
+        System.out.println("-> unlock account (5)");
+        System.out.println("-> assign debt (6)");
+        switch (scanner.next()) {
+            case "2":
+                BankService.seeInformation(currBank);
+                break;
+            case "3":
+                System.out.println("Choose account:");
+                BankService.seeAccounts(currBank);
+                BankService.seeAccountInformation(scanner.next());
+                break;
+            case "4":
+                System.out.println("Choose account:");
+                BankService.seeAccounts(currBank);
+                BankService.suspendAccount(scanner.next());
+                break;
+            case "5":
+                System.out.println("Choose account:");
+                BankService.seeAccounts(currBank);
+                BankService.unlockAccount(scanner.next());
+                break;
+            case "6":
+                System.out.println("Choose account:");
+                BankService.seeAccounts(currBank);
+                BankService.assignDebt(scanner.next());
+                break;
+            default:
+                BankService.seeAccounts(currBank);
+                break;
         }
+        Data.saveData("all");
     }
 }

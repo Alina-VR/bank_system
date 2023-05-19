@@ -7,14 +7,14 @@ public class Debit extends AbstractAccount {
     private int balance;
 
     public Debit(final String login, final String bankName,
-                 final String accountType, int balance) {
-        super(login, bankName, accountType);
+                 final String accountType, final boolean active, int balance) {
+        super(login, bankName, accountType, active);
         this.balance = balance;
         this.setId(AbstractAccount.createId(login, bankName, accountType));
     }
 
     public Debit() {
-        super("", "", "");
+        super("", "", "", true);
         this.balance = 0;
     }
 
@@ -24,23 +24,31 @@ public class Debit extends AbstractAccount {
     }
 
     @Override
-    public void push(final int sum) {
+    public void push(final int sum, boolean massage) {
         //add sum to balance
         balance += sum;
-        System.out.println("Your new balance is " + balance);
+        if (massage) {
+            System.out.println("Your new balance is " + balance);
+        }
     }
 
     @Override
-    public void withdraw(final int sum) {
+    public void withdraw(final int sum, boolean massage) {
         //get sum from balance
         if (sum <= balance) {
             balance -= sum;
-            System.out.println("Withdraw " + sum);
-            System.out.println("Your new balance is " + balance);
+            if (massage) {
+                System.out.println("Withdraw " + sum);
+                System.out.println("Your new balance is " + balance);
+            }
         } else {
-            System.out.println("You can withdraw only " + balance);
-            balance = 0;
-            System.out.println("Your new balance is " + balance);
+            if (massage) {
+                System.out.println("You can withdraw only " + balance);
+                balance = 0;
+                System.out.println("Your new balance is " + balance);
+            } else {
+                System.out.println("Influenced founds");
+            }
         }
     }
 

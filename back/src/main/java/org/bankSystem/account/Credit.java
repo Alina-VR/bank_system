@@ -11,15 +11,16 @@ public class Credit extends AbstractAccount {
     private int creditDebt;
 
     public Credit() {
-        super(" ", " ", " ");
+        super(" ", " ", " ", true);
         this.creditDebt = 0;
         this.creditLimit = 0;
         this.fee = 0;
     }
 
     public Credit(final String login, final String bankName,
-                  final String accountType, int creditDebt, final int creditLimit, final double fee) {
-        super(login, bankName, accountType);
+                  final String accountType, final boolean active,
+                  int creditDebt, final int creditLimit, final double fee) {
+        super(login, bankName, accountType, active);
         this.creditDebt = creditDebt;
         this.creditLimit = creditLimit;
         this.fee = fee;
@@ -27,7 +28,7 @@ public class Credit extends AbstractAccount {
     }
 
     @Override
-    public void push(final int sum) {
+    public void push(final int sum, boolean massage) {
         // add sum to balance
         if (creditDebt - sum > 0) {
             creditDebt = creditDebt - sum;
@@ -44,7 +45,7 @@ public class Credit extends AbstractAccount {
     }
 
     @Override
-    public void withdraw(final int sum) {
+    public void withdraw(final int sum, boolean massage) {
 
         if (creditDebt + sum <= creditLimit) {
             creditDebt += sum;
@@ -59,6 +60,10 @@ public class Credit extends AbstractAccount {
             creditDebt = creditLimit;
             System.out.println("Exceed limit, your debt is " + creditDebt);
         }
+    }
+
+    public void debt() {
+        creditDebt = (int) (creditDebt * (1 + fee));
     }
 
     @Override

@@ -4,18 +4,21 @@
     "login" : "a",
     "bankName" : "VTB",
     "accountType" : "debit",
+    "active" : true,
     "balance" : 9000
   }, {
     "ID" : "aSberBankdebit",
     "login" : "a",
     "bankName" : "SberBank",
     "accountType" : "debit",
+    "active" : true,
     "balance" : 1090
   }, {
     "ID" : "cVTBdebit",
     "login" : "c",
     "bankName" : "VTB",
     "accountType" : "debit",
+    "active" : true,
     "balance" : 1000
   } ],
   "Credits" : [ {
@@ -23,6 +26,7 @@
     "login" : "a",
     "bankName" : "VTB",
     "accountType" : "credit",
+    "active" : true,
     "creditLimit" : 1000000,
     "fee" : 0.5,
     "creditDebt" : 100

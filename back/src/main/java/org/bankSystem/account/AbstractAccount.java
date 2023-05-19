@@ -12,11 +12,15 @@ public abstract class AbstractAccount {
     @JsonProperty("accountType")
     private String accountType;
 
+    @JsonProperty("active")
+    private boolean active;
+
     public AbstractAccount(final String login,
-                           final String bankName, final String accountType) {
+                           final String bankName, final String accountType, final boolean active) {
         this.login = login;
         this.bankName = bankName;
         this.accountType = accountType;
+        this.active = active;
         this.id = AbstractAccount.createId(login, bankName, accountType);
     }
 
@@ -25,9 +29,9 @@ public abstract class AbstractAccount {
         return login + bankName + accountType;
     }
 
-    public abstract void push(int sum);
+    public abstract void push(int sum, boolean massage);
 
-    public abstract void withdraw(int sum);
+    public abstract void withdraw(int sum, boolean massage);
 
     public abstract void checkBalance();
 
@@ -67,5 +71,13 @@ public abstract class AbstractAccount {
 
     public void setAccountType(final String accountType) {
         this.accountType = accountType;
+    }
+
+    public boolean getActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

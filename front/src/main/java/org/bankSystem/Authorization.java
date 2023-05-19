@@ -16,18 +16,32 @@ public final class Authorization {
         Bank currBank;
         System.out.println("BankName: ");
         String bankName = scanner.next();
-
         currBank = Data.BANKS.get(bankName);
-        System.out.println("Registration ID: ");
-        String registrationID = scanner.next();
 
-        if (!registrationID.equals(currBank.getRegistrationID())) {
+        if (currBank == null) {
+
+            System.out.println("You don't have an account yet. Do you want to sign up? (y/n)");
+            String answer = scanner.next();
+            if (answer.equals("y")) {
+                currBank = bankSignUp();
+            } else {
+                System.out.println("Good bye!");
+                System.exit(0);
+            }
+        } else {
+
+            currBank = Data.BANKS.get(bankName);
             System.out.println("Registration ID: ");
-            String secondRegistrationID = scanner.next();
+            String registrationID = scanner.next();
 
-            if (!secondRegistrationID.equals(currBank.getRegistrationID())) {
-                System.out.println("Access denied");
-                System.exit(1);
+            if (!registrationID.equals(currBank.getRegistrationID())) {
+                System.out.println("Registration ID: ");
+                String secondRegistrationID = scanner.next();
+
+                if (!secondRegistrationID.equals(currBank.getRegistrationID())) {
+                    System.out.println("Access denied");
+                    System.exit(0);
+                }
             }
         }
         return currBank;
@@ -46,11 +60,27 @@ public final class Authorization {
         int creditLimit = scanner.nextInt();
 
         System.out.println("Fee: ");
-        double fee = scanner.nextDouble();
+        String enteredFee = scanner.next();
+
+        while (!isNumeric(enteredFee)) {
+            System.out.println("Enter format is ***,***. Please, use a comma, not a point!");
+            enteredFee = scanner.next();
+        }
+
+        double fee = Double.parseDouble(enteredFee);
 
         Bank currBank = new Bank(bankName, registrationID, creditLimit, fee);
         Data.BANKS.put(currBank.getBankName(), currBank);
         return currBank;
+    }
+
+    public static boolean isNumeric(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     public static Client clientSignIn() {
@@ -61,16 +91,30 @@ public final class Authorization {
         String login = scanner.next();
 
         currClient = Data.RUNTIME_DATA.get(login);
-        System.out.println("Password: ");
-        String password = scanner.next();
 
-        if (!password.equals(currClient.getPassword())) {
+        if (currClient == null) {
+
+            System.out.println("You don't have an account yet. Do you want to sign up? (y/n)");
+            String answer = scanner.next();
+            if (answer.equals("y")) {
+                currClient = clientSignUp();
+            } else {
+                System.out.println("Good bye!");
+                System.exit(0);
+            }
+        } else {
+
             System.out.println("Password: ");
-            String secondPassword = scanner.next();
+            String password = scanner.next();
 
-            if (!secondPassword.equals(currClient.getPassword())) {
-                System.out.println("Access denied");
-                System.exit(1);
+            if (!password.equals(currClient.getPassword())) {
+                System.out.println("Password: ");
+                String secondPassword = scanner.next();
+
+                if (!secondPassword.equals(currClient.getPassword())) {
+                    System.out.println("Access denied");
+                    System.exit(0);
+                }
             }
         }
         return currClient;
