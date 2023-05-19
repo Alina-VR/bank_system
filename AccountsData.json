@@ -4,7 +4,7 @@
     "login" : "a",
     "bankName" : "VTB",
     "accountType" : "debit",
-    "balance" : 9000
+    "balance" : 9001
   }, {
     "ID" : "aSberBankdebit",
     "login" : "a",
