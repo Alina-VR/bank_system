@@ -1,0 +1,27 @@
+image: maven
+
+default:
+  tags:
+    - common
+
+stages:
+  - build
+  - test
+
+Build job:
+  stage: build
+  script:
+    - mvn compile
+
+Test job:
+  stage: test
+  script:
+    - mvn test
+  artifacts:
+    when: always
+    paths:
+      - back/target/surefire-reports/*.xml
+      - back/target/site/jacoco
+    reports:
+      junit: back/target/surefire-reports/*.xml
+
