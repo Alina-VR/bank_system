@@ -8,6 +8,8 @@ public final class Main {
 
     public static void main(final String[] args) {
 
+        System.out.println("Welcome to the BankSystem!");
+
         Data.takeData();
 
         MainService.start();

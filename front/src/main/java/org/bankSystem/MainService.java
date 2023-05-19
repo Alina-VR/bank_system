@@ -9,8 +9,7 @@ public final class MainService {
 
     public static void start() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to the BankSystem!");
-        System.out.println("Do you want to continue as a bank (1) or as a client (2)? Type 1 or 2");
+        System.out.println("Do you want to continue as a bank (1) or as a client (2)? Type 1 or 2:");
         String roleChoice = scanner.next();
         if (roleChoice.equals("2")) {
 
@@ -29,18 +28,21 @@ public final class MainService {
                 start();
             } else if (answer.equals("n")) {
                 System.out.println("Good bye!");
+                System.exit(0);
             } else {
 
-                System.out.println("Please, type y or n");
+                System.out.println("Please, type y or n:");
                 String secondAnswer = scanner.next();
 
                 if (secondAnswer.equals("y")) {
                     start();
                 } else if (secondAnswer.equals("n")) {
                     System.out.println("Good bye!");
+                    System.exit(0);
                 } else {
                     System.out.print("Sorry, our program can't understand your requests. ");
-                    System.out.println("Please, read README.md to use it");
+                    System.out.println("Please, read README.md to use it.");
+                    System.exit(0);
                 }
             }
         }

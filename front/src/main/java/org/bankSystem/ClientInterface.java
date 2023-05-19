@@ -69,14 +69,14 @@ public final class ClientInterface {
 
     public static void clientWork(Client currClient) {
         Scanner scanner = new Scanner(System.in);
+        int i = 0;
         if (currClient.getAccounts().size() != 0) {
             System.out.println("There are your accounts here: ");
-
             for (String element : currClient.getAccounts()) {
-                System.out.println(element);
+                System.out.println(element + " (" + (i + 1) + ")");
+                i++;
             }
             System.out.println("Choose account or create a new one");
-            System.out.println("If you want to choose any account enter it's name from the list");
 
         } else {
             System.out.println("You have not got any accounts yet");
@@ -84,13 +84,18 @@ public final class ClientInterface {
 
         System.out.println("If you want to create a new one enter 'create'");
 
-        String command = scanner.next();
+        String answer = scanner.next();
 
-        if (command.equals("create")) {
+        if (answer.equals("create")) {
             AbstractAccount currAbstractAccount = AccountCreationInterface.createAccount(currClient);
             AccountWorkInterface.workWithAccount(currAbstractAccount.getId());
 
         } else {
+            if (Integer.parseInt(answer) > i || Integer.parseInt(answer) < 1) {
+                System.out.println("Sorry, there is not such a number in brackets.");
+                System.exit(0);
+            }
+            String command = currClient.getAccounts().get(Integer.parseInt(answer) - 1);
 
             for (String element : Data.ACCOUNT_DATA.keySet()) {
                 if (command.equals(element)) {

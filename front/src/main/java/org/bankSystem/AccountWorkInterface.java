@@ -1,5 +1,7 @@
 package org.bankSystem;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import org.bankSystem.account.AbstractAccount;
 import org.bankSystem.client.ClientService;
@@ -16,7 +18,7 @@ public final class AccountWorkInterface {
         if (!Data.ACCOUNT_DATA.get(element).getActive()) {
             System.out.println("Sorry, your account has been blocked by your bank.");
             System.out.println("Please, call the office to get asses back.");
-            System.exit(0);
+            return;
         }
 
         System.out.println("Choose the option:");
@@ -40,7 +42,7 @@ public final class AccountWorkInterface {
                 transfer(element);
                 break;
             default:
-                System.out.println("error");
+                System.out.println("There is not such an option.");
                 break;
         }
 
@@ -48,28 +50,42 @@ public final class AccountWorkInterface {
 
     public static void push(final String element) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Write down the sum ");
+        System.out.println("Write down the sum: ");
         int sum = scanner.nextInt();
         ClientService.push(element, sum);
     }
 
     public static void withdraw(final String element) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Write down the sum ");
+        System.out.println("Write down the sum: ");
         int sum = scanner.nextInt();
         ClientService.withdraw(element, sum);
     }
 
     public static void transfer(final String yourAccountID) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Choose debit account which you want " + "to transfer your money to");
+        System.out.println("Choose debit account which you want to transfer your money to: ");
+
+
+        List<String> accounts = new ArrayList<>();
+        int i = 0;
+
         for (AbstractAccount goalAccount : Data.ACCOUNT_DATA.values()) {
             if (goalAccount.getId().contains("debit") && !goalAccount.getId().equals(yourAccountID)) {
-                System.out.println(goalAccount.getId());
+                System.out.println(goalAccount.getId() + " (" + (i + 1) + ")");
+                accounts.add(goalAccount.getId());
+                i++;
             }
         }
-        String goalAccountID = scanner.next();
-        System.out.println("Write down the sum");
+
+        int account = scanner.nextInt();
+        if (account > i + 1 || account < 1) {
+            System.out.println("Sorry, there is not such number in brackets.");
+            System.exit(0);
+        }
+
+        String goalAccountID = accounts.get(account - 1);
+        System.out.println("Write down the sum:");
         int sum = scanner.nextInt();
 
         ClientService.transfer(yourAccountID, goalAccountID, sum);

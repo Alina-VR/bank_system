@@ -24,9 +24,24 @@ public final class Authorization {
             String answer = scanner.next();
             if (answer.equals("y")) {
                 currBank = bankSignUp();
-            } else {
+            } else if (answer.equals("n")) {
                 System.out.println("Good bye!");
                 System.exit(0);
+            } else {
+
+                System.out.println("Please, type y or n:");
+                String secondAnswer = scanner.next();
+
+                if (secondAnswer.equals("y")) {
+                    currBank = bankSignUp();
+                } else if (secondAnswer.equals("n")) {
+                    System.out.println("Good bye!");
+                    System.exit(0);
+                } else {
+                    System.out.print("Sorry, our program can't understand your requests. ");
+                    System.out.println("Please, read README.md to use it.");
+                    System.exit(0);
+                }
             }
         } else {
 
@@ -35,7 +50,7 @@ public final class Authorization {
             String registrationID = scanner.next();
 
             if (!registrationID.equals(currBank.getRegistrationID())) {
-                System.out.println("Registration ID: ");
+                System.out.println("Incorrect ID. Please, try again: ");
                 String secondRegistrationID = scanner.next();
 
                 if (!secondRegistrationID.equals(currBank.getRegistrationID())) {
@@ -52,35 +67,48 @@ public final class Authorization {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bank name: ");
         String bankName = scanner.next();
+        Bank currBank;
 
-        System.out.println("Registration ID: ");
-        String registrationID = scanner.next();
+        if (Data.BANKS.containsKey(bankName)) {
+            System.out.println("Bank with this name already exists.");
+            System.out.println("Do you want to sign in? (y/n)");
 
-        System.out.println("Credit Limit: ");
-        int creditLimit = scanner.nextInt();
+            if (scanner.next().equals("y")) {
+                System.out.println("Sign in:");
+                currBank = bankSignIn();
+            } else {
+                System.out.println("Sign up:");
+                currBank = bankSignUp();
+            }
+        } else {
 
-        System.out.println("Fee: ");
-        String enteredFee = scanner.next();
+            System.out.println("Registration ID: ");
+            String registrationID = scanner.next();
 
-        while (!isNumeric(enteredFee)) {
-            System.out.println("Enter format is ***,***. Please, use a comma, not a point!");
-            enteredFee = scanner.next();
+            System.out.println("Credit Limit: ");
+            String enteredLimit = scanner.next();
+
+            while (!isNatural(enteredLimit)) {
+                System.out.println("Enter format is natural number.");
+                enteredLimit = scanner.next();
+            }
+
+            int creditLimit = Integer.parseInt(enteredLimit);
+
+            System.out.println("Fee: ");
+            String enteredFee = scanner.next();
+
+            while (!isNumeric(enteredFee)) {
+                System.out.println("Enter format is *.* . Please, use a point, not a comma!");
+                enteredFee = scanner.next();
+            }
+
+            double fee = Double.parseDouble(enteredFee);
+
+            currBank = new Bank(bankName, registrationID, creditLimit, fee);
+            Data.BANKS.put(currBank.getBankName(), currBank);
         }
-
-        double fee = Double.parseDouble(enteredFee);
-
-        Bank currBank = new Bank(bankName, registrationID, creditLimit, fee);
-        Data.BANKS.put(currBank.getBankName(), currBank);
         return currBank;
-    }
-
-    public static boolean isNumeric(String str) {
-        try {
-            Double.parseDouble(str);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
     }
 
     public static Client clientSignIn() {
@@ -122,26 +150,62 @@ public final class Authorization {
 
     public static Client clientSignUp() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Name: ");
-        String name = scanner.next();
-
-        System.out.println("Surname: ");
-        String surname = scanner.next();
-
-        System.out.println("Address: ");
-        String address = scanner.next();
-
-        System.out.println("Passport: ");
-        String passport = scanner.next();
 
         System.out.println("Login: ");
         String login = scanner.next();
+        Client currClient;
 
-        System.out.println("Password: ");
-        String password = scanner.next();
+        if (Data.RUNTIME_DATA.containsKey(login)) {
+            System.out.println("Client with this login already exists.");
+            System.out.println("Do you want to sign in? (y/n)");
 
-        Client currClient = new Client(name, surname, address, passport, login, password);
-        Data.RUNTIME_DATA.put(currClient.getLogin(), currClient);
+            if (scanner.next().equals("y")) {
+                System.out.println("Sign in:");
+                currClient = clientSignIn();
+
+            } else {
+                System.out.println("Sign up:");
+                currClient = clientSignUp();
+            }
+
+        } else {
+
+            System.out.println("Name: ");
+            String name = scanner.next();
+
+            System.out.println("Surname: ");
+            String surname = scanner.next();
+
+            System.out.println("Address: ");
+            String address = scanner.next();
+
+            System.out.println("Passport: ");
+            String passport = scanner.next();
+
+            System.out.println("Password: ");
+            String password = scanner.next();
+
+            currClient = new Client(name, surname, address, passport, login, password);
+            Data.RUNTIME_DATA.put(currClient.getLogin(), currClient);
+        }
         return currClient;
+    }
+
+    public static boolean isNatural(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static boolean isNumeric(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }

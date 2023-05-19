@@ -2,25 +2,19 @@
   "Banks" : [ {
     "BankName" : "VTB",
     "RegistrationID" : "100",
-    "Accounts" : [ "aVTBdebit", "aVTBcredit", "cVTBdebit" ],
+    "Accounts" : [ "cVTBdebit" ],
     "CreditLimit" : 1000000,
     "Fee" : 0.5
   }, {
     "BankName" : "Tinkoff",
     "RegistrationID" : "100",
-    "Accounts" : [ ],
+    "Accounts" : [ "aTinkoffdebit" ],
     "CreditLimit" : 1000000000,
     "Fee" : 0.3
   }, {
-    "BankName" : "e",
-    "RegistrationID" : "100",
-    "Accounts" : [ ],
-    "CreditLimit" : 1000,
-    "Fee" : 12.0
-  }, {
     "BankName" : "SberBank",
     "RegistrationID" : "100",
-    "Accounts" : [ "aSberBankdebit" ],
+    "Accounts" : [ "aSberBankcredit" ],
     "CreditLimit" : 10000000,
     "Fee" : 0.7
   } ]

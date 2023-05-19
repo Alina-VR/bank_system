@@ -7,7 +7,7 @@ import java.util.List;
 public abstract class AbstractBank {
     @JsonProperty("BankName")
     private String bankName;
-    @JsonProperty("RegistrationID") //  How to name it properly?
+    @JsonProperty("RegistrationID")
     private String registrationID;
     @JsonProperty("Accounts")
     private List<String> accounts;

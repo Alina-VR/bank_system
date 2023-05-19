@@ -17,10 +17,15 @@ public final class BankService {
         System.out.println("fee: " + bank.getFee());
     }
 
-    public static void seeAccounts(Bank bank) {
+    public static boolean seeAccounts(Bank bank) {
+        if (bank.getAccounts().isEmpty()) {
+            System.out.println("There are not accounts in your bank.");
+            return false;
+        }
         for (String account: bank.getAccounts()) {
             System.out.println(account);
         }
+        return true;
     }
 
     public static void seeAccountInformation(String accountId) {

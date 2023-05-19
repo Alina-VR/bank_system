@@ -76,29 +76,38 @@ public final class BankInterface {
         System.out.println("-> suspect account (4)");
         System.out.println("-> unlock account (5)");
         System.out.println("-> assign debt (6)");
+        boolean flag;
         switch (scanner.next()) {
             case "2":
                 BankService.seeInformation(currBank);
                 break;
             case "3":
                 System.out.println("Choose account:");
-                BankService.seeAccounts(currBank);
-                BankService.seeAccountInformation(scanner.next());
+                flag = BankService.seeAccounts(currBank);
+                if (flag) {
+                    BankService.seeAccountInformation(scanner.next());
+                }
                 break;
             case "4":
                 System.out.println("Choose account:");
-                BankService.seeAccounts(currBank);
-                BankService.suspendAccount(scanner.next());
+                flag = BankService.seeAccounts(currBank);
+                if (flag) {
+                    BankService.suspendAccount(scanner.next());
+                }
                 break;
             case "5":
                 System.out.println("Choose account:");
-                BankService.seeAccounts(currBank);
-                BankService.unlockAccount(scanner.next());
+                flag = BankService.seeAccounts(currBank);
+                if (flag) {
+                    BankService.unlockAccount(scanner.next());
+                }
                 break;
             case "6":
                 System.out.println("Choose account:");
-                BankService.seeAccounts(currBank);
-                BankService.assignDebt(scanner.next());
+                flag = BankService.seeAccounts(currBank);
+                if (flag) {
+                    BankService.assignDebt(scanner.next());
+                }
                 break;
             default:
                 BankService.seeAccounts(currBank);
