@@ -28,7 +28,7 @@ public final class ClientInterface {
 
     public static Client clientAuthorization(boolean firstTime) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Choose sign_in (1) / sign_up (2)");
+        System.out.println("Choose: sign_in (1) / sign_up (2)");
         String sign = scanner.next();
         Client currClient = new Client();
 
@@ -46,7 +46,7 @@ public final class ClientInterface {
                 System.out.println("Good bye!");
                 System.exit(0);
             } else {
-                System.out.println("Please, type y or n");
+                System.out.println("Please, type y or n.");
                 String secondAnswer = scanner.next();
                 if (secondAnswer.equals("y")) {
                     currClient = clientAuthorization(false);
@@ -55,7 +55,7 @@ public final class ClientInterface {
                     System.exit(0);
                 } else {
                     System.out.print("Sorry, our program can't understand your requests. ");
-                    System.out.println("Please, read README.md to use it");
+                    System.out.println("Please, read README.md to use it.");
                     System.exit(0);
                 }
             }
@@ -76,20 +76,23 @@ public final class ClientInterface {
                 System.out.println(element + " (" + (i + 1) + ")");
                 i++;
             }
-            System.out.println("Choose account or create a new one");
+            System.out.println("Choose account or create a new one.");
 
         } else {
-            System.out.println("You have not got any accounts yet");
+            System.out.println("You have not got any accounts yet.");
         }
 
-        System.out.println("If you want to create a new one enter 'create'");
-
+        System.out.println("If you want to create a new one enter 'create'.");
+        System.out.println("If you want to escape enter 'bye'.");
         String answer = scanner.next();
 
         if (answer.equals("create")) {
             AbstractAccount currAbstractAccount = AccountCreationInterface.createAccount(currClient);
             AccountWorkInterface.workWithAccount(currAbstractAccount.getId());
 
+        } else if (answer.equals("bye")) {
+            System.out.println("Good bye!");
+            System.exit(0);
         } else {
             if (Integer.parseInt(answer) > i || Integer.parseInt(answer) < 1) {
                 System.out.println("Sorry, there is not such a number in brackets.");

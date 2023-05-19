@@ -28,7 +28,7 @@ public final class BankInterface {
 
     public static Bank bankAuthorization(boolean firstTime) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Choose sign_in (1) / sign_up (2)");
+        System.out.println("Choose: sign_in (1) / sign_up (2)");
         String sign = scanner.next();
         Bank currBank = new Bank();
 
@@ -46,7 +46,7 @@ public final class BankInterface {
                 System.out.println("Good bye!");
                 System.exit(0);
             } else {
-                System.out.println("Please, type y or n");
+                System.out.println("Please, type y or n.");
                 String secondAnswer = scanner.next();
                 if (secondAnswer.equals("y")) {
                     currBank = bankAuthorization(false);
@@ -55,7 +55,7 @@ public final class BankInterface {
                     System.exit(0);
                 } else {
                     System.out.print("Sorry, our program can't understand your requests. ");
-                    System.out.println("Please, read README.md to use it");
+                    System.out.println("Please, read README.md to use it.");
                     System.exit(0);
                 }
             }
@@ -76,8 +76,14 @@ public final class BankInterface {
         System.out.println("-> suspect account (4)");
         System.out.println("-> unlock account (5)");
         System.out.println("-> assign debt (6)");
+        System.out.println("If you want to escape enter 'bye'.");
+
         boolean flag;
         switch (scanner.next()) {
+            case "bye":
+                System.out.println("Good bye!");
+                System.exit(0);
+                break;
             case "2":
                 BankService.seeInformation(currBank);
                 break;

@@ -7,6 +7,17 @@
     <artifactId>bankSystem</artifactId>
     <version>1.0.0</version>
 
+    <!--
+    Project name: BankSystem
+    Authors: Elena Ermakova & Alina Raznosilina
+    Version: 1.0.0
+    Description:
+        Welcome to our Bank System! Here you can authorize as a client or as a bank.
+        Clients can create debit and credit accounts, push and withdraw money and (for debits) transfer money to another account.
+        Banks also can create profiles and can control their accounts.
+    -->
+
+
     <name>bankSystem</name>
     <packaging>pom</packaging>
 

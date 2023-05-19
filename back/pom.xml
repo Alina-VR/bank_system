@@ -8,6 +8,12 @@
     <artifactId>back</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+<!--    <parent>-->
+<!--        <groupId>org.bankSystem</groupId>-->
+<!--        <artifactId>bankSystem</artifactId>-->
+<!--        <version>1.0.0</version>-->
+<!--    </parent>-->
+
     <build>
         <plugins>
 

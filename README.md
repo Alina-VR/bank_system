@@ -15,10 +15,9 @@ and push, withdraw or transfer amount of money. Banks can set their credit limit
 ### _To start the program:_
 * go to the folder where you want to install the program using cd
 * then type : _git clone_ _**https://gitlab.akhcheck.ru/alina.raznosilina/banksystem.git**_
-* then type _**cd BankSystem**_
+* then type _**cd banksystem**_
 * then type _**mvn clean package**_
 * then type _**java -jar target/bankSystem-1.0.0-jar-with-dependencies.jar**_
 
-+ here are the UML Diagram and Use Case Diagram (look at _BankSystem/ UML Diagram and Use Case Diagram_)
-+ here are open base files (for the first time) (look at _ClientsBase_ and _AccountsBase_)
-+ here is the file with the launch of the program (look at _launch_)
++ here are the UML Diagram and Use Case Diagram (look at _banksystem/ UML Diagram and Use Case Diagram_)
++ here are open base files (for the first time) (look at _ClientsData_, _BanksData_ and _AccountsData_)
