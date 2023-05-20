@@ -48,4 +48,4 @@ Javadoc job:
     - mvn javadoc:aggregate
   artifacts:
     paths:
-      - target/site/apidocs/org
+      - target/site/apidocs
