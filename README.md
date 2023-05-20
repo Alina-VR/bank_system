@@ -28,7 +28,7 @@ and push, withdraw or transfer amount of money. Banks can set their credit limit
 * then find option _**open in browser**_
 * you will go to the site page
 
-### _To see the javadoc:_
+### _To use the app:_
 * our bank system has a simple interface
 * all you need to do is to follow the instructions and enter symbols from brackets
 * if you find any problems, please, email us
