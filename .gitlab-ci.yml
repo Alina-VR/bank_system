@@ -23,6 +23,7 @@ Test job:
   stage: test
   script:
     - mvn test
+    - cat back/target/site/jacoco/index.html
   artifacts:
     when: always
     paths:
