@@ -2,6 +2,7 @@ package org.bankSystem.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/** Debit account class */
 public class Debit extends AbstractAccount {
     /** Your debit balance */
     @JsonProperty("balance")

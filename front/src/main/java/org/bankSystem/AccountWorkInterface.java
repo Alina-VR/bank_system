@@ -7,12 +7,14 @@ import org.bankSystem.account.AbstractAccount;
 import org.bankSystem.client.ClientService;
 import org.bankSystem.data.Data;
 
+/** Account work interface */
 public final class AccountWorkInterface {
-
+    /** Empty constructor */
     private AccountWorkInterface() {
 
     }
 
+    /** This method provides account work for user */
     public static void workWithAccount(final String element) {
         Scanner scanner = new Scanner(System.in);
         if (!Data.ACCOUNT_DATA.get(element).getActive()) {
@@ -48,6 +50,7 @@ public final class AccountWorkInterface {
 
     }
 
+    /** This method provides push operation for user */
     public static void push(final String element) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Write down the sum: ");
@@ -55,6 +58,7 @@ public final class AccountWorkInterface {
         ClientService.push(element, sum);
     }
 
+    /** This method provides withdraw operation for user */
     public static void withdraw(final String element) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Write down the sum: ");
@@ -62,6 +66,7 @@ public final class AccountWorkInterface {
         ClientService.withdraw(element, sum);
     }
 
+    /** This method provides transfer operation for user */
     public static void transfer(final String yourAccountID) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose debit account which you want to transfer your money to: ");

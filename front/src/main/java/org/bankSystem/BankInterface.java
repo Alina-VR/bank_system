@@ -5,12 +5,15 @@ import org.bankSystem.bank.Bank;
 import org.bankSystem.bank.BankService;
 import org.bankSystem.data.Data;
 
+/** Bank interface */
 public final class BankInterface {
 
+    /** Empty constructor */
     private BankInterface() {
 
     }
 
+    /** The method of global bank interface */
     public static void bank() {
         Scanner scanner = new Scanner(System.in);
 
@@ -26,6 +29,7 @@ public final class BankInterface {
         System.out.println("Good Bye!");
     }
 
+    /** Method for bank authorization */
     public static Bank bankAuthorization(boolean firstTime) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose: sign_in (1) / sign_up (2)");
@@ -67,6 +71,7 @@ public final class BankInterface {
         return currBank;
     }
 
+    /** Method for bank work */
     public static void bankWork(Bank currBank) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose the option:");

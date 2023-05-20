@@ -9,11 +9,14 @@ import org.bankSystem.client.Client;
 import org.bankSystem.client.ClientService;
 import org.bankSystem.data.Data;
 
+/** Account creation interface */
 public final class AccountCreationInterface {
 
+    /** Empty constructor */
     private AccountCreationInterface() {
     }
 
+    /** This method provides account creation for user */
     public static AbstractAccount createAccount(final Client currClient) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose Bank: ");

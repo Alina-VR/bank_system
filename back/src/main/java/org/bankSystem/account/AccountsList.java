@@ -3,6 +3,7 @@ package org.bankSystem.account;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
+/** Account list class */
 public class AccountsList {
     /** List of debits */
     @JsonProperty("Debits")

@@ -15,10 +15,13 @@ import org.bankSystem.bank.BanksList;
 import org.bankSystem.client.Client;
 import org.bankSystem.client.ClientsList;
 
+/** IO service class */
 public final class IoService {
+    /** Empty constructor */
     private IoService() {
     }
 
+    /** This method takes clients data from file */
     public static void inputClientsData() {
         File file1 = new File("ClientsData.json");
 
@@ -39,6 +42,7 @@ public final class IoService {
         }
     }
 
+    /** This method takes accounts data from file */
     public static void inputAccountsData() {
         File file2 = new File("AccountsData.json");
 
@@ -60,6 +64,7 @@ public final class IoService {
         }
     }
 
+    /** This method takes banks data from file */
     public static void inputBanksData() {
         File file3 = new File("BanksData.json");
 
@@ -80,6 +85,7 @@ public final class IoService {
         }
     }
 
+    /** This method saves clients data to file */
     public static void outputClientsData() {
         List<Client> clients = new ArrayList<>();
         List<String> keys1 = new ArrayList<>(Data.RUNTIME_DATA.keySet());
@@ -96,6 +102,7 @@ public final class IoService {
         }
     }
 
+    /** This method saves accounts data to file */
     public static void outputAccountsData() {
         List<Credit> credits = new ArrayList<>();
         List<Debit> debits = new ArrayList<>();
@@ -119,6 +126,7 @@ public final class IoService {
         }
     }
 
+    /** This method saves banks data to file */
     public static void outputBanksData() {
         List<Bank> banks = new ArrayList<>();
         List<String> keys3 = new ArrayList<>(Data.BANKS.keySet());

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
 
+/** Just an abstract class for banks */
 public abstract class AbstractBank {
     /** Name of tne bank */
     @JsonProperty("BankName")

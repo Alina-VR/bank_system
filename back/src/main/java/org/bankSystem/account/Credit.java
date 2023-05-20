@@ -2,6 +2,7 @@ package org.bankSystem.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/** Credit account class */
 public class Credit extends AbstractAccount {
     /** Max sum that you can withdraw */
     @JsonProperty("creditLimit")

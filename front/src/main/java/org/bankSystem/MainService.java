@@ -2,11 +2,14 @@ package org.bankSystem;
 
 import java.util.Scanner;
 
+/** Main service class */
 public final class MainService {
+    /** Empty constructor */
     private MainService() {
 
     }
 
+    /** Starter of interface */
     public static void start() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Do you want to continue as a bank (1) or as a client (2)? Type 1 or 2:");

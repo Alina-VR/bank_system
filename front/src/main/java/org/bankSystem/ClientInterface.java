@@ -5,12 +5,15 @@ import org.bankSystem.account.AbstractAccount;
 import org.bankSystem.client.Client;
 import org.bankSystem.data.Data;
 
+/** Client interface */
 public final class ClientInterface {
 
+    /** Empty constructor */
     private ClientInterface() {
 
     }
 
+    /** The method of global client interface */
     public static void client() {
         Scanner scanner = new Scanner(System.in);
 
@@ -26,6 +29,7 @@ public final class ClientInterface {
         System.out.println("Good Bye!");
     }
 
+    /** Method for client authorization */
     public static Client clientAuthorization(boolean firstTime) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose: sign_in (1) / sign_up (2)");
@@ -67,6 +71,7 @@ public final class ClientInterface {
         return currClient;
     }
 
+    /** Method for client work */
     public static void clientWork(Client currClient) {
         Scanner scanner = new Scanner(System.in);
         int i = 0;

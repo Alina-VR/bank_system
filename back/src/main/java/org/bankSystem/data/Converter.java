@@ -9,14 +9,20 @@ import org.bankSystem.account.AccountsList;
 import org.bankSystem.bank.BanksList;
 import org.bankSystem.client.ClientsList;
 
+/** Converter class */
 public final class Converter {
+    /** Clients data */
     private static final String BASEFILE1 = "ClientsData.json";
+    /** Accounts data */
     private static final String BASEFILE2 = "AccountsData.json";
+    /** Banks data */
     private static final String BASEFILE3 = "BanksData.json";
 
+    /** Empty constructor */
     private Converter() {
     }
 
+    /** Converts client object to json file */
     public static void toJSONClient(final ClientsList clientsList) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
@@ -24,6 +30,7 @@ public final class Converter {
         mapper.writeValue(new File(BASEFILE1), clientsList);
     }
 
+    /** Converts json file to client object */
     public static ClientsList toJavaObjectClient() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
@@ -32,6 +39,7 @@ public final class Converter {
                 ClientsList.class);
     }
 
+    /** Converts account object to json file */
     public static void toJSONAccount(final AccountsList accountsList) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
@@ -39,6 +47,7 @@ public final class Converter {
         mapper.writeValue(new File(BASEFILE2), accountsList);
     }
 
+    /** Converts json file to account object */
     public static AccountsList toJavaObjectAccount() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
@@ -47,6 +56,7 @@ public final class Converter {
                 AccountsList.class);
     }
 
+    /** Converts bank object to json file */
     public static void toJSONBank(final BanksList banksList) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
@@ -54,6 +64,7 @@ public final class Converter {
         mapper.writeValue(new File(BASEFILE3), banksList);
     }
 
+    /** Converts json file to bank object */
     public static BanksList toJavaObjectBank() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 

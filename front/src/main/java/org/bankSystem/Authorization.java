@@ -5,12 +5,15 @@ import org.bankSystem.bank.Bank;
 import org.bankSystem.client.Client;
 import org.bankSystem.data.Data;
 
+/** Authorization class */
 public final class Authorization {
 
+    /** Empty constructor */
     private Authorization() {
 
     }
 
+    /** This method provides sign in operation for bank */
     public static Bank bankSignIn() {
         Scanner scanner = new Scanner(System.in);
         Bank currBank;
@@ -62,6 +65,7 @@ public final class Authorization {
         return currBank;
     }
 
+    /** This method provides sign up operation for bank */
     public static Bank bankSignUp() {
 
         Scanner scanner = new Scanner(System.in);
@@ -111,6 +115,7 @@ public final class Authorization {
         return currBank;
     }
 
+    /** This method provides sign in operation for client */
     public static Client clientSignIn() {
         Scanner scanner = new Scanner(System.in);
         Client currClient;
@@ -148,6 +153,7 @@ public final class Authorization {
         return currClient;
     }
 
+    /** This method provides sign up operation for  client */
     public static Client clientSignUp() {
         Scanner scanner = new Scanner(System.in);
 
@@ -191,6 +197,7 @@ public final class Authorization {
         return currClient;
     }
 
+    /** Just a checker */
     public static boolean isNatural(String str) {
         try {
             Integer.parseInt(str);
@@ -200,6 +207,7 @@ public final class Authorization {
         }
     }
 
+    /** Just a checker */
     public static boolean isNumeric(String str) {
         try {
             Double.parseDouble(str);
