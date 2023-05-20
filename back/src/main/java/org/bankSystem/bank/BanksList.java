@@ -16,17 +16,6 @@ public class BanksList {
         banks = new ArrayList<>();
     }
 
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for (Bank bank : getBanks()) {
-            stringBuilder.append(bank.toString());
-        }
-
-        return String.valueOf(stringBuilder);
-    }
-
     public List<Bank> toBanksArray() {
         return new ArrayList<>(banks);
     }
