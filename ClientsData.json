@@ -2,11 +2,11 @@
   "Clients" : [ {
     "Login" : "a",
     "Password" : "a",
-    "Accounts" : [ "aVTBdebit", "aSberBankdebit", "aVTBcredit" ],
+    "Accounts" : [ "aTinkoffdebit", "aSberBankcredit" ],
     "UserName" : "a",
     "UserSurname" : "a",
     "Address" : "a",
-    "Passport" : "0"
+    "Passport" : "a"
   }, {
     "Login" : "c",
     "Password" : "c",

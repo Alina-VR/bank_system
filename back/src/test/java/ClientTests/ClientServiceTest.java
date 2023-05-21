@@ -21,15 +21,15 @@ public class ClientServiceTest {
 
     @BeforeEach
     public void makeStartConditions() {
-        credit = new Credit("a", "VTB", "credit", 1000, 1000000, 0);
-        debit = new Debit("a", "VTB", "debit", 1000);
-        debit = new Debit("a", "SberBank", "debit", 1000);
+        credit = new Credit("a", "VTB", "credit", true, 1000, 1000000, 0);
+        debit = new Debit("a", "VTB", "debit", true, 1000);
+        debit = new Debit("a", "SberBank", "debit", true, 1000);
         client = new Client("a", "b", "moscow", "000", "a", "a");
         Data.BANKS.put("VTB", new Bank("VTB", "aaa", 1000000, 0));
         Data.BANKS.put("SberBank", new Bank("SberBank", "bbb", 2000000, 0));
-        Data.ACCOUNT_DATA.put("aVTBdebit", new Debit("a", "VTB", "debit", 1000));
-        Data.ACCOUNT_DATA.put("aVTBcredit", new Credit("a", "VTB", "credit", 1000, 1000000, 0.5));
-        Data.ACCOUNT_DATA.put("aSberBankdebit", new Debit("a", "SberBank", "debit", 1000));
+        Data.ACCOUNT_DATA.put("aVTBdebit", new Debit("a", "VTB", "debit", true, 1000));
+        Data.ACCOUNT_DATA.put("aVTBcredit", new Credit("a", "VTB", "credit", true, 1000, 1000000, 0.5));
+        Data.ACCOUNT_DATA.put("aSberBankdebit", new Debit("a", "SberBank", "debit", true, 1000));
     }
 
     @Test

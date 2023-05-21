@@ -10,24 +10,24 @@ public class DebitTest {
 
     @BeforeEach
     public void makeDebit() {
-        debit = new Debit("aa", "SberBank", "debit", 1000);
+        debit = new Debit("aa", "SberBank", "debit", true, 1000);
     }
 
     @Test
     public void testDebitPush(){
-        debit.push(500);
+        debit.push(500, true);
         assertEquals(1500, debit.getBalance());
     }
 
     @Test
     public void testDebitWithdrawSumThatLessThenBalance() {
-        debit.withdraw(500);
+        debit.withdraw(500, true);
         assertEquals(500, debit.getBalance());
     }
 
     @Test
     public void testDebitWithdrawMoreThenBalance() {
-        debit.withdraw(999900);
+        debit.withdraw(999900, true);
         assertEquals(0, debit.getBalance());
     }
 }

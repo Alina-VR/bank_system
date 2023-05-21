@@ -1,30 +1,27 @@
 {
   "Debits" : [ {
-    "ID" : "aVTBdebit",
+    "ID" : "aTinkoffdebit",
     "login" : "a",
-    "bankName" : "VTB",
+    "bankName" : "Tinkoff",
     "accountType" : "debit",
-    "balance" : 9000
-  }, {
-    "ID" : "aSberBankdebit",
-    "login" : "a",
-    "bankName" : "SberBank",
-    "accountType" : "debit",
-    "balance" : 1090
+    "active" : true,
+    "balance" : 200
   }, {
     "ID" : "cVTBdebit",
     "login" : "c",
     "bankName" : "VTB",
     "accountType" : "debit",
-    "balance" : 1000
+    "active" : true,
+    "balance" : 1005
   } ],
   "Credits" : [ {
-    "ID" : "aVTBcredit",
+    "ID" : "aSberBankcredit",
     "login" : "a",
-    "bankName" : "VTB",
+    "bankName" : "SberBank",
     "accountType" : "credit",
-    "creditLimit" : 1000000,
-    "fee" : 0.5,
-    "creditDebt" : 100
+    "active" : true,
+    "creditLimit" : 10000000,
+    "fee" : 0.7,
+    "creditDebt" : 50
   } ]
 }
