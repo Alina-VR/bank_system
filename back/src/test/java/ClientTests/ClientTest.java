@@ -1,6 +1,6 @@
-package BankTests;
+package ClientTests;
 
-import org.bankSystem.bank.Bank;
+import org.bankSystem.client.Client;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -10,26 +10,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class BankTest {
+public class ClientTest {
 
-    static Bank bank;
+    static Client client;
 
     @BeforeAll
-    public static void createBank() {
-        bank = new Bank("VTB", "aaa", 100, 0.5);
+    public static void createClient() {
+        client = new Client("a", "a", "a", "0", "a", "a");
     }
 
     @Test
     public void testToString() {
 
 
-        bank.toString();
+        client.toString();
 
         PrintStream stream = mock(PrintStream.class);
         ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
         System.setOut(stream);
 
-        String params = "VTB " + "aaa " + "100 " + "0.5";
+        String params = "User name: a, User Surname: a, Address: a, Passport: 0, Login: a, Password: a";
         System.out.println(params);
 
         verify(stream).println(captor.capture());

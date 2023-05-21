@@ -1,0 +1,51 @@
+image: maven
+
+default:
+  tags:
+    - common
+
+stages:
+  - validate
+  - build
+  - test
+  - deliver
+
+Validate job:
+  stage: validate
+  script: mvn validate
+
+Build job:
+  stage: build
+  script:
+    - mvn compile
+
+Test job:
+  stage: test
+  script:
+    - mvn test
+    - cat back/target/site/jacoco/index.html
+  artifacts:
+    when: always
+    paths:
+      - back/target/surefire-reports/*.xml
+      - back/target/site/jacoco
+    reports:
+      junit: back/target/surefire-reports/*.xml
+  coverage: /Total.*?([0-9]{1,3})%/
+
+Package job:
+  stage: deliver
+  script: mvn package
+  artifacts:
+    when: always
+    paths:
+      - target/bankSystem-1.0.0-jar-with-dependencies.jar
+
+Javadoc job:
+  stage: deliver
+  script:
+    - mvn install
+    - mvn javadoc:aggregate
+  artifacts:
+    paths:
+      - target/site/apidocs

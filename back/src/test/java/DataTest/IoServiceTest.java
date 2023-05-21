@@ -35,18 +35,18 @@ public class IoServiceTest {
         ACCOUNT_DATA_TEST.clear();
         BANKS_TEST.clear();
 
-        credit = new Credit("a", "VTB", "credit", 1000, 1000000, 0);
-        debit = new Debit("a", "VTB", "debit", 1000);
-        debit = new Debit("a", "SberBank", "debit", 1000);
+        credit = new Credit("a", "VTB", "credit", true, 1000, 1000000, 0);
+        debit = new Debit("a", "VTB", "debit", true, 1000);
+        debit = new Debit("a", "SberBank", "debit", true, 1000);
         client1 = new Client("a", "b", "moscow", "000", "a", "a");
         client2 = new Client("b", "a", "moscow", "000", "b", "b");
 
         Data.BANKS.put("VTB", new Bank("VTB", "aaa", 1000000, 0));
         Data.BANKS.put("SberBank", new Bank("SberBank", "bbb", 2000000, 0));
 
-        Data.ACCOUNT_DATA.put("aVTBdebit", new Debit("a", "VTB", "debit", 1000));
-        Data.ACCOUNT_DATA.put("aVTBcredit", new Credit("a", "VTB", "credit", 1000, 1000000, 0.5));
-        Data.ACCOUNT_DATA.put("aSberBankdebit", new Debit("a", "SberBank", "debit", 1000));
+        Data.ACCOUNT_DATA.put("aVTBdebit", new Debit("a", "VTB", "debit", true, 1000));
+        Data.ACCOUNT_DATA.put("aVTBcredit", new Credit("a", "VTB", "credit", true, 1000, 1000000, 0.5));
+        Data.ACCOUNT_DATA.put("aSberBankdebit", new Debit("a", "SberBank", "debit", true, 1000));
 
         Data.RUNTIME_DATA.put("a", client1);
         Data.RUNTIME_DATA.put("b", client2);
@@ -54,9 +54,9 @@ public class IoServiceTest {
         BANKS_TEST.put("VTB", new Bank("VTB", "aaa", 1000000, 0));
         BANKS_TEST.put("SberBank", new Bank("SberBank", "bbb", 2000000, 0));
 
-        ACCOUNT_DATA_TEST.put("aVTBdebit", new Debit("a", "VTB", "debit", 1000));
-        ACCOUNT_DATA_TEST.put("aVTBcredit", new Credit("a", "VTB", "credit", 1000, 1000000, 0.5));
-        ACCOUNT_DATA_TEST.put("aSberBankdebit", new Debit("a", "SberBank", "debit", 1000));
+        ACCOUNT_DATA_TEST.put("aVTBdebit", new Debit("a", "VTB", "debit", true, 1000));
+        ACCOUNT_DATA_TEST.put("aVTBcredit", new Credit("a", "VTB", "credit", true, 1000, 1000000, 0.5));
+        ACCOUNT_DATA_TEST.put("aSberBankdebit", new Debit("a", "SberBank", "debit", true, 1000));
 
         RUNTIME_DATA_TEST.put("a", client1);
         RUNTIME_DATA_TEST.put("b", client2);
